@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd">
+
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/" debug="false">
+ 
+    <appender name="Appender1Console" class="org.apache.log4j.ConsoleAppender">       	   
+       <layout class="org.apache.log4j.PatternLayout">
+          <param name="ConversionPattern" value="%d %d{Z} [%t] %-5p (%c:%L) - %m%n"/>
+       </layout>
+    </appender>
+  
+    <appender name="Appender2File" class="org.apache.log4j.FileAppender">
+       <param name="File" value="log4j/log.out"/>
+       <param name="immediateFlush" value="true"/>
+	   <param name="threshold" value="debug"/>
+	   <param name="append" value="false"/>
+	   
+       <layout class="org.apache.log4j.PatternLayout">
+          <param name="ConversionPattern" value="%d %d{Z} [%t] %-5p (%c:%L) - %m%n"/>
+       </layout>
+    </appender>
+    
+    <appender name="Appender3DB" class="org.apache.log4j.jdbc.JDBCAppender">
+       <param name="URL" value="jdbc:mariadb://localhost:3307/test"/>
+       <param name="driver" value="org.mariadb.jdbc.Driver"/>
+	   <param name="user" value="root"/>
+	   <param name="password" value="root"/>
+	   <param name="sql" value="INSERT INTO logs VALUES('%x','%d{yyyy/MM/dd}','%C','%p','%m')"/>
+	   
+       <layout class="org.apache.log4j.PatternLayout"/>       
+    </appender>
+ 
+    <root>
+        <priority value="WARN"/>
+        <appender-ref ref="Appender1Console" />
+        <appender-ref ref="Appender2File" />
+        <appender-ref ref="Appender3DB" />
+    </root>
+     
+</log4j:configuration>
