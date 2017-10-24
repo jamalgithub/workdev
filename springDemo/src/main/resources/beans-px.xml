@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	default-destroy-method="preDestroy" default-init-method="postConstruct"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+
+
+	<bean id="myorg" class="com.jamal.springDemo.domain.OrganizationPX">
+		<constructor-arg value="${org.companyName}" name="companyName" />
+		<constructor-arg value="${org.yearOfIncorporation}"
+			name="yearOfIncorporation" />
+		<!-- <property name="postalCode" value="75757"></property> -->
+		<property name="employeeCount" value="${org.employeeCount}"></property>
+		<!-- <property name="slogan" value="Work hard, have fun, make history"/> -->
+		<property name="businessService" ref="cloudService"></property>
+	</bean>
+	<bean id="cloudService" class="com.jamal.springDemo.serviceImp.CloudServiceImpl">
+	</bean>
+	<bean id="ecommerceService"
+		class="com.jamal.springDemo.serviceImp.EcommerceServiceImpl">
+	</bean>
+
+	<!-- <context:annotation-config></context:annotation-config> -->
+	<context:component-scan base-package="com.jamal.springdemo.domain" />
+	<context:property-placeholder location="classpath:properties/organizationPX.properties" />
+</beans>

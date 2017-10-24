@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd">
+
+	<bean id="myorg" class="com.jamal.springDemo.domain.OrganisationAware"
+		scope="prototype">
+		<constructor-arg value="BMW" index="0" name="companyName" />
+		<constructor-arg value="1929" index="1"
+			name="yearOfIncorporation" />
+		<property name="postalCode" value="93020" />
+		<property name="employeeCount" value="1000" />
+	</bean>
+
+	<bean name="myAwareService" class="com.jamal.springDemo.service.MyAwareService" />
+</beans>

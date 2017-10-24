@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+	default-destroy-method="preFestroy"
+	default-init-method="postConstruct">
+
+	<bean id="myorg" class="com.jamal.springDemo.domain.OrganisationCB"
+		init-method="initialize" destroy-method="destroy">
+		<constructor-arg value="BMW" index="0" name="companyName" />
+		<constructor-arg value="1929" index="1"
+			name="yearOfIncorporation" />
+		<property name="postalCode" value="93020" />
+		<property name="employeeCount" value="1000" />
+		<property name="slogan" value="Work hard, have fun, make history" />
+		<property name="businessService" ref="cloudService" />
+	</bean>
+
+	<bean id="myorg2" class="com.jamal.springDemo.domain.OrganisationCB"
+		factory-method="getInstance" factory-bean="organizationFactory">
+		<constructor-arg value="BMW" index="0" name="companyName" />
+		<constructor-arg value="1929" index="1"
+			name="yearOfIncorporation" />
+	</bean>
+
+	<bean id="cloudService" class="com.jamal.springDemo.serviceImp.CloudServiceImpl" />
+
+	<bean id="ecommerceService" class="com.jamal.springDemo.serviceImp.EcommerceServiceImpl" />
+
+	<bean id="organizationFactory" class="com.jamal.springDemo.domain.OrganizationFactory">
+	</bean>
+</beans>
