@@ -18,5 +18,5 @@
 
 	<context:property-placeholder location="organization.properties" />
 
-	<context:component-scan base-package="com.jamal.springdemo.daoimpl" />
+	<context:component-scan base-package="com.jamal.springdemo" />
 </beans>

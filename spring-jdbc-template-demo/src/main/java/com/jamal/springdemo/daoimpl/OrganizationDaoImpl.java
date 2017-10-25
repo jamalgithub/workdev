@@ -28,6 +28,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
 				+ "VALUES(?, ?, ?, ?, ?)";
 		Object[] args = new Object[] { org.getCompanyName(), org.getYearOfIncorporation(), org.getPostalCode(),
 				org.getEmployeeCount(), org.getSlogan() };
+		
 		return jdbcTemplate.update(sqlQuery, args) == 1;
 	}
 
@@ -36,6 +37,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
 		String sqlQuery = "SELECT id, company_name, year_of_incorporation, postal_code, employee_count, slogan "
 				+ "FROM organization WHERE id = ?";
 		Object[] args = new Object[] { id };
+		
 		Organization org = jdbcTemplate.queryForObject(sqlQuery, args, new OrganizationRowMapper());
 		return org;
 	}
@@ -52,6 +54,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
 	public boolean delete(Organization org) {
 		String sqlQuery = "DELETE FROM organization WHERE id = ?";
 		Object[] args = new Object[] { org.getId() };
+		
 		return jdbcTemplate.update(sqlQuery, args) == 1;
 	}
 
@@ -59,6 +62,7 @@ public class OrganizationDaoImpl implements OrganizationDao {
 	public boolean update(Organization org) {
 		String sqlQuery = "UPDATE organization SET slogan = ? WHERE id = ?";
 		Object[] args = new Object[] { org.getSlogan(), org.getId() };
+		
 		return jdbcTemplate.update(sqlQuery, args) == 1;
 	}
 

@@ -38,6 +38,5 @@ public class JdbcTemplateExceptionApp {
 
 		// close the application context
 		((ClassPathXmlApplicationContext) ctx).close();
-
 	}
 }
