@@ -8,6 +8,7 @@
 <title>Insert title here</title>
 </head>
 <body>
+	<h1>Welcome Page</h1>
 	<c:forEach var="messageItem" items="${myWelcomeMessage}">
 		<c:out value="${messageItem}"></c:out>
 	</c:forEach>
