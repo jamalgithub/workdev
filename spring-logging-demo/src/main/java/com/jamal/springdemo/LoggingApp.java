@@ -19,7 +19,7 @@ public class LoggingApp {
 	private OrganizationDao dao;
 
 	@Autowired
-	private DaoUtils3 daoUtils;
+	private DaoUtils daoUtils;
 
 	public void actionMethod() {		
 		

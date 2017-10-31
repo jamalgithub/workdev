@@ -2,6 +2,7 @@ package com.jamal.springdemo.config;
 
 import javax.sql.DataSource;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -13,6 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 import org.springframework.web.servlet.view.JstlView;
 import org.springframework.web.servlet.view.UrlBasedViewResolver;
 
+import com.jamal.springdemo.interceptors.ExecutionTimerInterceptor;
 import com.jamal.springdemo.interceptors.HeaderInterceptor;
 
 @Configuration
@@ -20,6 +22,12 @@ import com.jamal.springdemo.interceptors.HeaderInterceptor;
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter /* implements WebMvcConfigurer */ {
 
+	@Autowired
+	private HeaderInterceptor headerInterceptor;
+	
+	@Autowired
+	private ExecutionTimerInterceptor executionTimerInterceptor;
+	
 	@Bean
 	public DataSource dataSource() {
 		final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
@@ -52,7 +60,9 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter /* implements WebMvcCo
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(new HeaderInterceptor());
+		registry.addInterceptor(headerInterceptor);
+		//registry.addInterceptor(new HeaderInterceptor());
+		registry.addInterceptor(executionTimerInterceptor).addPathPatterns("/location");
 	}	
 
 }

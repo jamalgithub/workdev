@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
+
 public class HeaderInterceptor extends HandlerInterceptorAdapter {
 
 	@Override
@@ -19,7 +20,4 @@ public class HeaderInterceptor extends HandlerInterceptorAdapter {
 		
 		return true;
 	}
-	
-	
-
 }
