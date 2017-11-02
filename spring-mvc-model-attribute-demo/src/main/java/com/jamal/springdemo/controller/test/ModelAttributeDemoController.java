@@ -4,8 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.jamal.springdemo.domain.Address;
@@ -14,8 +16,14 @@ import com.jamal.springdemo.domain.Address;
 public class ModelAttributeDemoController {
 	private static Logger LOGGER = LoggerFactory.getLogger(ModelAttributeDemoController.class);
 	
+	/*
+	 * Test Series of home version
+	 * http://localhost:8080/spring-mvc-model-attribute-demo/homei  with i = , 2, 3, 4, 5
+	 */
+	
 	/**
-	 * version 1 of our home() method
+	 * version 1 of our home() method<br>
+	 * url : http://localhost:8080/spring-mvc-model-attribute-demo/home
 	 * @return View name
 	 */
 	@RequestMapping(value = "/home")
@@ -26,45 +34,64 @@ public class ModelAttributeDemoController {
 	}
 	
 	/**
-	 *  version 2 of our home() method
+	 *  version 2 of our home() method<br>
+	 * url : http://localhost:8080/spring-mvc-model-attribute-demo/home2
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/home2")
 	public ModelAndView home2() {
+		LOGGER.info("INSIDE home2: " + System.currentTimeMillis());
+		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("modelAttributeHome");
-		mav.addObject("anAddress", new Address());
+		//mav.addObject("anAddress", new Address());
+		mav.addObject("command", new Address());
+		
 		return mav;
 	}
 	
 	/**
-	 * version 3 of our home() method
+	 * version 3 of our home() method<br>
+	 * url : http://localhost:8080/spring-mvc-model-attribute-demo/home3
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/home3")
 	public ModelAndView home3() {
+		LOGGER.info("INSIDE home3: " + System.currentTimeMillis());
+		
 		ModelAndView mav = new ModelAndView("modelAttributeHome");
 		mav.addObject("anAddress", new Address());
+		//mav.addObject("command", new Address());
+		
 		return mav;
 	}
 	
 	/**
-	 * version 4 of our home() method
+	 * version 4 of our home() method<br>
+	 * url : http://localhost:8080/spring-mvc-model-attribute-demo/home4
 	 * @return ModelAndView
 	 */
 	@RequestMapping(value = "/home4")
 	public ModelAndView home4() {
+		LOGGER.info("INSIDE home4: " + System.currentTimeMillis());
+		
 		return new ModelAndView("modelAttributeHome", "anAddress", new Address("Melbourne", "3000"));
+		//return new ModelAndView("modelAttributeHome", "command", new Address("Melbourne", "3000"));
 	}
 
 	/**
-	 * version 5 of our home() method
+	 * version 5 of our home() method<br>
+	 * url : http://localhost:8080/spring-mvc-model-attribute-demo/home5
 	 * @param model
 	 * @return View name
 	 */
 	@RequestMapping(value = "/home5")
 	public String home5(Model model) {
+		LOGGER.info("INSIDE home5: " + System.currentTimeMillis());
+		
 		model.addAttribute("anAddress", new Address("Brisbane", "4000"));
+		//model.addAttribute("command", new Address("Brisbane", "4000"));
+		
 		return "modelAttributeHome";
 	}
 
@@ -78,7 +105,8 @@ public class ModelAttributeDemoController {
 	 */
 	@ModelAttribute
 	public void modelAttributeTest1(Model model) {
-		LOGGER.info("INSIDE modelAttributeTest1: " + System.currentTimeMillis());
+		LOGGER.info("INSIDE modelAttributeTest1");
+		
 		model.addAttribute("testdata1A", "Welcome to the @ModelAttribute Test Bed!");
 		model.addAttribute("testdata1B", "We will test both usages of the @ModelAttribute, on methods and on method arguments.");
 	}
@@ -114,5 +142,35 @@ public class ModelAttributeDemoController {
 		LOGGER.info("INSIDE modelAttributeTest4");
 		
 		return new Address("Sydney", "2000");
+	}
+	
+	/**
+	 * Test 5: testing the <b>@ModelAttribute</b> with 'value' and default binding
+	 * @param anAddress
+	 * @param model
+	 * @return View name
+	 */
+	@RequestMapping(value="/test5", method=RequestMethod.POST)
+	public String modelAttributeTest5(@ModelAttribute(value="anAddress") Address anAddress, ModelMap model) {
+		LOGGER.info("INSIDE modelAttributeTest5");
+		
+		model.addAttribute("testdata5A", anAddress.getCity());
+		model.addAttribute("testdata5B", anAddress.getZipCode());
+		
+		return "modelAttributeTest";
+	}
+	
+	/**
+	 * Test 6: Test to determine nature of how the <b>@ModelAttribute</b> (on method) and <b>@RequestMapping</b> work with no explicit logical view name.<br>
+	 * Spring will determine <b>modelAttributeTest</b> as view name based on the mapped url <b>/modelAttributeTest</b><br>
+	 * url : http://localhost:8080/spring-mvc-model-attribute-demo/modelAttributeTest
+	 * @return
+	 */
+	@RequestMapping(value="/modelAttributeTest")
+	@ModelAttribute("testdata6")
+	public Address modelAttributeTest6() {
+		LOGGER.info("INSIDE modelAttributeTest6");
+		
+		return new Address("Rabat", "10000");
 	}
 }
