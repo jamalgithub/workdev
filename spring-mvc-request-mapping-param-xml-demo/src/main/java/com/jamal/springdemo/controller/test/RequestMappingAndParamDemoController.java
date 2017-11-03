@@ -185,7 +185,7 @@ public class RequestMappingAndParamDemoController {
 	}
 	
 	/**
-	 * test 9: Testing <b>@RequestMapping</b> with <b>Dynamic URI's</b><br>
+	 * test 9: Testing <b>@RequestMapping</b> with <b>Path Variables (Dynamic URI's)</b><br>
 	 * http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo<b>/test9</b>/<b>xxx</b>/<b>yyy</b>
 	 * @param orgname
 	 * @param model
@@ -193,6 +193,21 @@ public class RequestMappingAndParamDemoController {
 	 */
 	@RequestMapping(value = "/test9/{orgname}/{testserial}", method = RequestMethod.GET)
 	public String requestMappingAndParamTest9(@PathVariable String orgname, @PathVariable String testserial, Model model) {
+		model.addAttribute("orgname", orgname);
+		model.addAttribute("testserial", testserial);
+		
+		return "requestMappingAndParamResults";
+	}
+	
+	/**
+	 * test 9: Testing <b>@RequestMapping</b> with <b>Path Variables (Dynamic URI's)</b> and <b>RegEx</b><br>
+	 * http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo<b>/test10</b>/<b>xxx</b>/<b>yyy</b>
+	 * @param orgname
+	 * @param model
+	 * @return View name
+	 */
+	@RequestMapping(value = "/test10/{orgname}/{testserial:[\\d]+}", method = RequestMethod.GET)
+	public String requestMappingAndParamTest10(@PathVariable String orgname, @PathVariable int testserial, Model model) {
 		model.addAttribute("orgname", orgname);
 		model.addAttribute("testserial", testserial);
 		
