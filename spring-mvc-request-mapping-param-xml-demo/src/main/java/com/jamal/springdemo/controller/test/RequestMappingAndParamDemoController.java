@@ -1,5 +1,7 @@
 package com.jamal.springdemo.controller.test;
 
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.slf4j.Logger;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequestMapping(value = "/requestMappingAndParamDemo")
 @Controller
@@ -54,6 +57,20 @@ public class RequestMappingAndParamDemoController {
 		model.addAttribute("testserial", "test2");
 		
 		return "requestMappingAndParamResults";
+	}
+	
+	/**
+	 * Testing @RequestMapping with multiple HTTP request methods to the same controller method<br>
+	 * curl -i -X GET http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test12<br>
+	 * curl -i -X PUT http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test12<br>
+	 * curl -i -X POST http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test12<br>
+	 * 
+	 * @return
+	 */
+	@RequestMapping(value = "/test22", method = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST })
+	@ResponseBody
+	public String requestMappingTest22() {
+	    return "Advanced - GET, PUT and POST within single method";
 	}
 
 	/**
@@ -161,6 +178,22 @@ public class RequestMappingAndParamDemoController {
 	}
 	
 	/**
+	 * test 6, subtest 5: Testing removal of @RequestMapping with <b>multiple request params</b> and <b>@RequestParam</b> with Map<br>
+	 * http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test6/subtest5?<b>orgname</b>=xxxx&<b>empcount</b>=yyy
+	 * @param orgname
+	 * @param empcount
+	 * @param model
+	 * @return View name
+	 */
+	@RequestMapping(value = "/test6/subtest5", method = RequestMethod.GET, params = { "orgname", "empcount" })
+	public String requestMappingAndParamTest6Subtest5(@RequestParam Map<String, String> queryMap, Model model) {		
+		model.addAttribute("param", queryMap);
+		model.addAttribute("testserial", "test6-subtest5");
+		
+		return "requestMappingAndParamResults2";
+	}
+	
+	/**
 	 * test 7 & 8: Testing <b>@RequestParam</b> with <b>multiple request URI's</b><br>
 	 * http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo<b>/test7</b>?orgname=xxxx<br>
 	 * http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo<b>/test8</b>?orgname=xxxx
@@ -192,7 +225,7 @@ public class RequestMappingAndParamDemoController {
 	 * @return View name
 	 */
 	@RequestMapping(value = "/test9/{orgname}/{testserial}", method = RequestMethod.GET)
-	public String requestMappingAndParamTest9(@PathVariable String orgname, @PathVariable String testserial, Model model) {
+	public String requestMappingAndParamTest9(@PathVariable(value = "orgname") String orgname, @PathVariable String testserial, Model model) {
 		model.addAttribute("orgname", orgname);
 		model.addAttribute("testserial", testserial);
 		
@@ -200,18 +233,54 @@ public class RequestMappingAndParamDemoController {
 	}
 	
 	/**
-	 * test 9: Testing <b>@RequestMapping</b> with <b>Path Variables (Dynamic URI's)</b> and <b>RegEx</b><br>
-	 * http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo<b>/test10</b>/<b>xxx</b>/<b>yyy</b>
+	 * test 10: Testing <b>@RequestMapping</b> with <b>Path Variables (Dynamic URI's)</b> and <b>@RequestParam</b><br>
+	 * http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo<b>/test10</b>/<b>xxx</b>?<b>testserial</b>=yyy
 	 * @param orgname
 	 * @param model
 	 * @return View name
 	 */
-	@RequestMapping(value = "/test10/{orgname}/{testserial:[\\d]+}", method = RequestMethod.GET)
-	public String requestMappingAndParamTest10(@PathVariable String orgname, @PathVariable int testserial, Model model) {
+	@RequestMapping(value = "/test10/{orgname}", method = RequestMethod.GET)
+	public String requestMappingAndParamTest10(@PathVariable(value = "orgname") String orgname, @RequestParam String testserial, Model model) {
 		model.addAttribute("orgname", orgname);
 		model.addAttribute("testserial", testserial);
 		
 		return "requestMappingAndParamResults";
 	}
+	
+	/**
+	 * test 11: Testing <b>@RequestMapping</b> with <b>Path Variables (Dynamic URI's)</b> and <b>RegEx</b><br>
+	 * http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo<b>/test11</b>/<b>xxx</b>/<b>111</b>
+	 * @param orgname
+	 * @param model
+	 * @return View name
+	 */
+	@RequestMapping(value = "/test11/{orgname}/{testserial:[\\d]+}", method = RequestMethod.GET)
+	public String requestMappingAndParamTest11(@PathVariable String orgname, @PathVariable int testserial, Model model) {
+		model.addAttribute("orgname", orgname);
+		model.addAttribute("testserial", testserial);
+		
+		return "requestMappingAndParamResults";
+	}	
 
+	/**
+	 * test 12: Testing <b>@RequestMapping</b> with <b>Header</b><br>
+	 * curl -i -H "key:val" http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test12
+	 * @return
+	 */
+	@RequestMapping(value = "/test12", headers = "key=val", method = RequestMethod.GET)
+	@ResponseBody
+	public String requestMappingWithHeader() {
+	    return "Get some Foos with Header";
+	}
+	/**
+	 * test 12: Testing <b>@RequestMapping</b> with Consumes and Produces
+	 * curl -i -H "Accept:application/json" http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test13
+	 * @return
+	 */
+	@RequestMapping(value = "/test13", method = RequestMethod.GET, produces = { "application/json", "application/xml" })
+	@ResponseBody
+	public String getTestAsJsonFromBrowser() {
+	    return "Get some Foos with Header Old";
+	}
+	
 }
