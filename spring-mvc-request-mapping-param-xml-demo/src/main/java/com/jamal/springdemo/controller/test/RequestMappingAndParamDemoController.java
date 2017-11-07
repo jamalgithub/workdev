@@ -60,16 +60,16 @@ public class RequestMappingAndParamDemoController {
 	}
 	
 	/**
-	 * Testing @RequestMapping with multiple HTTP request methods to the same controller method<br>
-	 * curl -i -X GET http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test12<br>
-	 * curl -i -X PUT http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test12<br>
-	 * curl -i -X POST http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test12<br>
+	 * Testing <b>@RequestMapping</b> with <b>multiple HTTP request methods</b> to the same controller method<br>
+	 * curl -i -X GET http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test2/subtest2<br>
+	 * curl -i -X PUT http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test2/subtest2<br>
+	 * curl -i -X POST http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test2/subtest2<br>
 	 * 
 	 * @return
 	 */
-	@RequestMapping(value = "/test22", method = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST })
+	@RequestMapping(value = "/test2/subtest2", method = { RequestMethod.GET, RequestMethod.PUT, RequestMethod.POST })
 	@ResponseBody
-	public String requestMappingTest22() {
+	public String requestMappingTest2Subtest2() {
 	    return "Advanced - GET, PUT and POST within single method";
 	}
 
@@ -261,26 +261,5 @@ public class RequestMappingAndParamDemoController {
 		
 		return "requestMappingAndParamResults";
 	}	
-
-	/**
-	 * test 12: Testing <b>@RequestMapping</b> with <b>Header</b><br>
-	 * curl -i -H "key:val" http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test12
-	 * @return
-	 */
-	@RequestMapping(value = "/test12", headers = "key=val", method = RequestMethod.GET)
-	@ResponseBody
-	public String requestMappingWithHeader() {
-	    return "Get some Foos with Header";
-	}
-	/**
-	 * test 12: Testing <b>@RequestMapping</b> with Consumes and Produces
-	 * curl -i -H "Accept:application/json" http://localhost:8080/spring-mvc-request-mapping-param-xml-demo/requestMappingAndParamDemo/test13
-	 * @return
-	 */
-	@RequestMapping(value = "/test13", method = RequestMethod.GET, produces = { "application/json", "application/xml" })
-	@ResponseBody
-	public String getTestAsJsonFromBrowser() {
-	    return "Get some Foos with Header Old";
-	}
 	
 }
