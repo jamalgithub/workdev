@@ -44,8 +44,8 @@ public class ModelAttributeDemoController {
 		
 		ModelAndView mav = new ModelAndView();
 		mav.setViewName("modelAttributeHome");
-		//mav.addObject("anAddress", new Address());
-		mav.addObject("command", new Address());
+		mav.addObject("anAddress", new Address());
+		//mav.addObject("command", new Address());
 		
 		return mav;
 	}
@@ -112,7 +112,9 @@ public class ModelAttributeDemoController {
 	}
 	
 	/**
-	 * Test 2: Demonstrating the usage of the <b>'name'</b> attribute of the @ModelAttribute annotation <b>(on a method)</b>
+	 * Test 2: Demonstrating the usage of the <b>'name'</b> attribute of the @ModelAttribute annotation <b>(on a method)</b><br>
+	 * add the returned value to a temporary Map object with a key <b>"testdata2"</b><br>
+	 * The data from this Map would be added to the final Model after the execution of the handler method
 	 * @return
 	 */
 	@ModelAttribute(name="testdata2")
@@ -123,7 +125,9 @@ public class ModelAttributeDemoController {
 	}
 	
 	/**
-	 * Test 3: Demonstrating the usage of the @ModelAttribute annotation <b>(on a method)</b> to implicitly add an attribute by returning it and also demonstrating the usage of the <b>'value'</b> attribute of the @ModelAttribute annotation <b>(on a method)</b>
+	 * Test 3: Demonstrating the usage of the @ModelAttribute annotation <b>(on a method)</b> to implicitly add an attribute by returning it and also demonstrating the usage of the <b>'value'</b> attribute of the @ModelAttribute annotation <b>(on a method)</b><br>
+	 * add the returned value to a temporary Map object with a key <b>"testdata3"</b><br>
+	 * The data from this Map would be added to the final Model after the execution of the handler method
 	 * @return
 	 */
 	@ModelAttribute(value="testdata3")
@@ -134,7 +138,9 @@ public class ModelAttributeDemoController {
 	}
 	
 	/**
-	 * Test 4: Demonstrate the <b>default naming strategy</b> of the @ModelAttribute annotation <b>(on a method)</b>
+	 * Test 4: Demonstrate the <b>default naming strategy</b> of the @ModelAttribute annotation <b>(on a method)</b><br>
+	 * add the returned value to a temporary Map object with a key <b>"address"</b><br>
+	 * The data from this Map would be added to the final Model after the execution of the handler method
 	 * @return
 	 */
 	@ModelAttribute
@@ -145,7 +151,11 @@ public class ModelAttributeDemoController {
 	}
 	
 	/**
-	 * Test 5: testing the <b>@ModelAttribute</b> with 'value' and default binding
+	 * Test 5: testing the <b>@ModelAttribute</b> with 'value' and default binding<br>
+	 * Before invoking this method, Spring tries to retrieve the object <b>"anAddress"</b> from the temporary Map object.<br>
+	 * If it doesn’t find it in the Map, then it checks if there is a SessionAttributes annotation applied on the controller with the given value.<br>
+	 * If the annotation is present, then the object is retrieved from the session.<br>
+	 * If the session doesn’t contain the object despite of the @SessionAttributes, then an error is raised.
 	 * @param anAddress
 	 * @param model
 	 * @return View name
