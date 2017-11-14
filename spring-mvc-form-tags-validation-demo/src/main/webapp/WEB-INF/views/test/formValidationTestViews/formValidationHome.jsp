@@ -3,7 +3,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
+<%@ taglib prefix = "fn" uri = "http://java.sun.com/jsp/jstl/functions"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -28,6 +28,21 @@
 					<td><form:label path="lastName" cssClass="clabel">Last Name</form:label></td>
 					<td><form:input path="lastName" placeholder="Enter Surname" cssClass="cinput"/></td>
 					<td><form:errors path="lastName" cssClass="cb"/></td>
+				</tr>
+				<tr>
+					<td><form:label path="age" cssClass="clabel">Age</form:label></td>
+					<td><form:input path="age" placeholder="Enter Age" cssClass="cinput"/></td>
+					<td><form:errors path="age" cssClass="cb"/></td>
+				</tr>
+				<tr>
+					<td><form:label path="zipCode" cssClass="clabel">Zip Code</form:label></td>
+					<td><form:input path="zipCode" placeholder="Enter Zip Code" cssClass="cinput"/></td>
+					<td><form:errors path="zipCode" cssClass="cb"/></td>
+				</tr>
+				<tr>
+					<td><form:label path="email" cssClass="clabel">Email</form:label></td>
+					<td><form:input path="email" placeholder="Enter Email Address" cssClass="cinput"/></td>
+					<td><form:errors path="email" cssClass="cb"/></td>
 				</tr>
 				<tr>
 					<td/>

@@ -18,7 +18,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.jamal.springdemo.domain.test.OrganizationRepresentative;
 
-
 @Controller
 @RequestMapping("/formValidationDemo")
 public class FormValidationDemoController {
