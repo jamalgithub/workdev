@@ -19,6 +19,7 @@
 		<h3>Age: <b class="cb">${orgrep.age}</b></h3>
 		<h3>Zip Code: <b class="cb">${orgrep.zipCode}</b></h3>
 		<h3>Email: <b class="cb">${orgrep.email}</b></h3>
+		<h3>Password: <b class="cb">${orgrep.password}</b></h3>
 	</div>
 	
 	<hr/>

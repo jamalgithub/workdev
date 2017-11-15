@@ -7,11 +7,11 @@ import org.apache.commons.validator.routines.EmailValidator;
 
 public class EmailVerificationValidator implements ConstraintValidator<EmailVerification, String> {
 	
-	private String message;
+	//private String message;
 
 	@Override
 	public void initialize(EmailVerification constraintAnnotation) {
-		this.message = constraintAnnotation.message();
+		//this.message = constraintAnnotation.message();
 	}
 
 	@Override

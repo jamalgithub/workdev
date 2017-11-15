@@ -8,7 +8,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import com.jamal.springdemo.validation.test.AgeConstraint;
 import com.jamal.springdemo.validation.test.EmailVerification;
+import com.jamal.springdemo.validation.test.FieldsVerification;;
 
+@FieldsVerification.List({
+	@FieldsVerification(field = "email", fieldMatch = "verifyEmail", message = "* Email addresses do not match"),
+	@FieldsVerification(field = "password", fieldMatch = "verifyPassword", message = "* Password do not match")	
+})
 public class OrganizationRepresentative {
 	
 	@NotBlank(message="* First Name: cannot be blank")
@@ -26,7 +31,18 @@ public class OrganizationRepresentative {
 	private String zipCode;
 	
 	@EmailVerification(message="* Email: is invalid")
+	@NotBlank(message = "* Email can not be blank")
 	private String email;
+	
+	@NotBlank(message = "* Email can not be blank")
+	private String verifyEmail;
+	
+	@NotBlank(message = "* Password can not be blank")
+	private String password;
+	
+	@NotBlank(message = "* Password can not be blank")
+	private String verifyPassword;
+	
 
 	public String getFirstName() {
 		return firstName;
@@ -66,6 +82,30 @@ public class OrganizationRepresentative {
 
 	public void setEmail(String email) {
 		this.email = email;
+	}
+
+	public String getVerifyEmail() {
+		return verifyEmail;
+	}
+
+	public void setVerifyEmail(String verifyEmail) {
+		this.verifyEmail = verifyEmail;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public String getVerifyPassword() {
+		return verifyPassword;
+	}
+
+	public void setVerifyPassword(String verifyPassword) {
+		this.verifyPassword = verifyPassword;
 	}
 	
 }
