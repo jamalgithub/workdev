@@ -5,8 +5,7 @@
 
 	<bean id="myorg" class="com.jamal.springDemo.domain.OrganisationDI">
 		<constructor-arg value="BMW" index="0" name="companyName" />
-		<constructor-arg value="1929" index="1"
-			name="yearOfIncorporation" />
+		<constructor-arg value="1929" index="1" name="yearOfIncorporation" />
 		<property name="postalCode" value="93020" />
 		<property name="employeeCount" value="1000" />
 		<property name="slogan" value="Work hard, have fun, make history" />

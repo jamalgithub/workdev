@@ -9,6 +9,8 @@ public class PropertiesWithAnnotationApp {
 
 	public static void main(String[] args) {
 		// create the application context (container)
+		//ApplicationContext ctx = new FileSystemXmlApplicationContext("bean.xml");
+    	//ApplicationContext ctx = new ClassPathXmlApplicationContext("beans.xml");
 		ApplicationContext ctx = new AnnotationConfigApplicationContext(PropertyConfig.class);
 		
 		OrganizationPA org = (OrganizationPA) ctx.getBean("myorg");
