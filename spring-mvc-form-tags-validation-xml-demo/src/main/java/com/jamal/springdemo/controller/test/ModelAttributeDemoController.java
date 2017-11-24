@@ -158,7 +158,7 @@ public class ModelAttributeDemoController {
 	 * If the session doesn’t contain the object despite of the @SessionAttributes, then an error is raised.
 	 * @param anAddress
 	 * @param model
-	 * @return View name
+	 * @return the logic view
 	 */
 	@RequestMapping(value="/test5", method=RequestMethod.POST)
 	public String modelAttributeTest5(@ModelAttribute(value="anAddress") Address anAddress, ModelMap model) {
@@ -168,7 +168,7 @@ public class ModelAttributeDemoController {
 		model.addAttribute("testdata5B", anAddress.getZipCode());
 		
 		return "modelAttributeTest";
-	}
+	}	
 	
 	/**
 	 * Test 6: Test to determine nature of how the <b>@ModelAttribute</b> (on method) and <b>@RequestMapping</b> work with no explicit logical view name.<br>
@@ -178,7 +178,7 @@ public class ModelAttributeDemoController {
 	 */
 	@RequestMapping(value="/modelAttributeTest")
 	@ModelAttribute("testdata6")
-	public Address modelAttributeTest6() {
+	public Address modelAttributeTest7() {
 		LOGGER.info("INSIDE modelAttributeTest6");
 		
 		return new Address("Rabat", "10000");
