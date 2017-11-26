@@ -5,6 +5,13 @@
 	default-destroy-method="preDestroy"
 	default-init-method="postConstruct">
 
+	<bean class="com.jamal.springDemo.service.beanpostprocessor.CheckerPostProcessor">
+		<property name="order" value="1"></property>
+	</bean>
+	<bean class="com.jamal.springDemo.service.beanpostprocessor.CheckerPostProcessor2">
+		<property name="order" value="0"></property>
+	</bean>
+
 	<bean id="myorg" class="com.jamal.springDemo.domain.OrganisationCB"
 		init-method="initialize" destroy-method="destroy">
 		<constructor-arg value="BMW" index="0" name="companyName" />
