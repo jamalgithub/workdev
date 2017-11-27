@@ -12,7 +12,7 @@ import com.denofprogramming.model.MessageValue;
 public class DynamicMessageOfTheDayImpl implements MessageOfTheDayService {
 
 	// Messages held in an Array
-	private String[] messagesArray = {};
+	private String[] messagesArray = {};	
 	private MessageValue[] messagesValueArray = {};
 
 	// Messages held in a List

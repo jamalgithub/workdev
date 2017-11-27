@@ -25,6 +25,10 @@
 		<c:if test="${testdata6 != null}">
 			Address relocated to: <h3 style="color: #DF0101">${testdata6.city}, ${testdata6.zipCode}</h3>
 		</c:if>
+		
+		<c:if test="${flashAtt != null}">
+			The flash Attribute: <h3 style="color: #DF0101">${flashAtt}</h3>
+		</c:if>
 	</div>
 </body>
 </html>

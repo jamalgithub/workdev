@@ -1,22 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
 	xmlns:c="http://www.springframework.org/schema/c"
-	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
-	default-init-method="init" default-destroy-method="destroy">
+	default-init-method="init" default-destroy-method="destroy"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	
+	<context:component-scan base-package="com.denofprogramming.service" />
 
 	<bean class="com.denofprogramming.service.processors.PrinterCheckerPostProcessor"></bean>
 	<bean class="com.denofprogramming.service.processors.MessageCheckerPostProcessor"></bean>
 	<bean class="com.denofprogramming.service.processors.MessageCheckerPostProcessor2" p:order="1"></bean>
 	
-	<bean id="abstractStampedMessageOfTheDay" class="com.denofprogramming.service.AbstractStampedMessageOfTheDay"
+	<!-- <bean id="abstractStampedMessageOfTheDay" class="com.denofprogramming.service.AbstractStampedMessageOfTheDay"
 		p:message="Hello from the Den" init-method="init" destroy-method="destroy" abstract="true"/>
 	
-	<bean id="basicMessageOfDay" class="com.denofprogramming.service.BasicMessageOfTheDayImpl"
-		p:message="Hello from the Den" init-method="init" destroy-method="destroy"/>
-		
 	<bean id="noneStamped" parent="abstractStampedMessageOfTheDay" class="com.denofprogramming.service.NoneStampedMessageOfTheDayImpl" p:message="None Stamed Message!!"/>
-	<bean id="timeStamped" parent="abstractStampedMessageOfTheDay" class="com.denofprogramming.service.TimeStampedMessageOfTheDayImpl" p:message="Time Stamed Message!!"/>
+	<bean id="timeStamped" parent="abstractStampedMessageOfTheDay" class="com.denofprogramming.service.TimeStampedMessageOfTheDayImpl" p:message="Time Stamed Message!!"/> -->
+	
+	<bean id="basicMessageOfDay" class="com.denofprogramming.service.BasicMessageOfTheDayImpl"
+		p:message="Hello from the Den" init-method="init" destroy-method="destroy"/>			
 
 	<bean id="dynamicMessageOfDay" class="com.denofprogramming.service.DynamicMessageOfTheDayImpl">		
 		<!-- <constructor-arg>
@@ -30,7 +35,7 @@
 				<value>"Saturday morning message!"</value>
 			</array>
 		</constructor-arg> -->
-		<constructor-arg>
+		<!-- <constructor-arg>
 			<array>
 				<ref bean="1" />
 				<ref bean="2" />
@@ -40,7 +45,7 @@
 				<ref bean="6" />
 				<ref bean="7" />
 			</array>
-		</constructor-arg>
+		</constructor-arg> -->
 		<!-- <property name="messagesArray">
 			<array>
 				<value>"Sunday morning message!"</value>				
@@ -96,7 +101,7 @@
 				<entry key="7" value="Saturday morning message!"/>
 			</map>
 		</property> -->
-		<!-- <property name="messagesValueMap">
+		<property name="messagesValueMap">
 			<map>
 				<entry key="1" value-ref="1"/>				
 				<entry key="2" value-ref="2"/>				
@@ -106,11 +111,11 @@
 				<entry key="6" value-ref="6"/>				
 				<entry key="7" value-ref="7"/>				
 			</map>
-		</property> -->
+		</property>
 	</bean>
 
-	<bean id="printer" class="com.denofprogramming.service.MessagePrinter"
-		c:name="My printer service" c:separator=">>" c:service-ref="noneStamped" />
+	<!-- <bean id="printer" class="com.denofprogramming.service.MessagePrinter"
+		c:name="My printer service" c:separator=">>" c:service-ref="noneStamped" /> -->
 
 
 	<!-- Message Value objects -->

@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 
 import com.jamal.springdemo.domain.Address;
@@ -39,7 +40,8 @@ public class RedirectAndForwardController {
 	 * Redirect With the Prefix redirect
 	 * @param anAddress
 	 * @param model
-	 * @return the redirect URL <br>The redirect will respond with a 302 and the new URL in the Location header.<br>The browser will then make another request to the new URL
+	 * @return the redirect URL <br>The redirect will respond with a 302 and the new URL in the Location header.<br>The browser will then make another request to the new URL<br>
+	 * curl -L --verbose -X POST http://localhost:8080/spring-mvc-form-tags-validation-xml-demo/redirectAndForwardDemo/redirectTest1
 	 */
 	@RequestMapping(value="/redirectTest1", method=RequestMethod.POST)
 	public String redirectTest1(@ModelAttribute(value="anAddress") Address anAddress, ModelMap model) {
@@ -51,6 +53,12 @@ public class RedirectAndForwardController {
 		return "redirect:redirectedUrl";		
 	}
 	
+	/**
+	 * Redirect With <b>RedirectView</b><br>
+	 * @param anAddress
+	 * @param model
+	 * @return
+	 */
 	@RequestMapping(value="/redirectTest2", method=RequestMethod.POST)
     public RedirectView redirectTest2 (@ModelAttribute(value="anAddress") Address anAddress, ModelMap model) {
 		LOGGER.info("INSIDE redirectTest2");
@@ -59,21 +67,45 @@ public class RedirectAndForwardController {
 		model.addAttribute("testdata5B", anAddress.getZipCode());
 		
         RedirectView rv = new RedirectView();
-        rv.setContextRelative(true);
+        rv.setContextRelative(false);
         rv.setUrl("redirectedUrl");
         return rv;
     }
 	
-	@RequestMapping(value = "redirectTest3/{id}")
+	/**
+	 * Redirect With <b>RedirectView</b><br>
+	 * curl -i http://localhost:8080/spring-mvc-form-tags-validation-xml-demo/redirectAndForwardDemo/redirectTest3/pathValue/11
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/redirectTest3/{id}")
     public RedirectView redirectTest3 (Model model) {
         model.addAttribute("attr", "attrVal");
         model.addAttribute("testPath", "pathValue");
 
         RedirectView rv = new RedirectView();
         rv.setContextRelative(true);
-        rv.setUrl("/redirectTest3/{testPath}/{id}");
+        rv.setUrl("{testPath}/{id}");
         return rv;
-    }    
+    }
+	
+	/**
+	 * Redirect With <b>RedirectView</b> and <b>RedirectAttributes</b><br>
+	 * <b>flash attribute</b> is an attribute that won’t make it into the URL. We can access it using @ModelAttribute(“flashAttribute”) only in the method that is the final target of the redirect<br>
+	 * curl -i http://localhost:8080/spring-mvc-form-tags-validation-xml-demo/redirectAndForwardDemo/redirectTest4
+	 * @param model
+	 * @return
+	 */
+	@RequestMapping(value = "/redirectTest4")
+    public RedirectView redirectTest4 (RedirectAttributes attributes) {        
+        attributes.addFlashAttribute("flashAttribute", "flash Attribute");
+        attributes.addAttribute("attribute", "redirectWithRedirectAttributes");
+        
+        RedirectView rv = new RedirectView();
+        rv.setContextRelative(true);
+        rv.setUrl("redirectedUrl2");
+        return rv;
+    }
     
 	/**
 	 * Forward With the Prefix forward
@@ -100,7 +132,16 @@ public class RedirectAndForwardController {
 		return "test/redirectForwardViews/redirectforwardTest";
 	}
 	
-	@RequestMapping("redirectTest3/{testPath}/{id}")
+	@RequestMapping(value="/redirectedUrl2")
+	public String redirectTest13(Model model, @ModelAttribute("flashAttribute") Object flashAttribute) {
+		LOGGER.info("INSIDE redirectTest13");
+		
+		model.addAttribute("flashAtt", flashAttribute);
+		
+		return "test/redirectForwardViews/redirectforwardTest";
+	}
+	
+	@RequestMapping("/redirectTest3/{testPath}/{id}")
     public String redirectTest12 (@PathVariable("testPath") String testPath, @PathVariable("id") String id,
                                  @RequestParam("attr") String attr, Model model) {
 

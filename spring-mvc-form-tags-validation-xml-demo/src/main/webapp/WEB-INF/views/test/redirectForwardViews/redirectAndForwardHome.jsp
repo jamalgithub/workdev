@@ -41,7 +41,7 @@
 		
 		${testdata1B} ${testdata2}
 		<hr/>
-		<form:form action="redirectTest1" modelAttribute="anAddress">
+		<form:form action="redirectTest2" modelAttribute="anAddress">
 			<h3>test 1: Testing Redirect</h3>
 			<table>
 				<tr>

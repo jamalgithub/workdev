@@ -3,7 +3,10 @@ package com.denofprogramming.service;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
+@Service("timeStamped")
 public final class TimeStampedMessageOfTheDayImpl extends AbstractStampedMessageOfTheDay {
 
 	public TimeStampedMessageOfTheDayImpl() {
@@ -28,6 +31,7 @@ public final class TimeStampedMessageOfTheDayImpl extends AbstractStampedMessage
 	}
 	
 	@Override
+	@Value("Time Stamed Message!!")
 	public void setMessage(String message) {
 		super.setMessage(message);
 	}

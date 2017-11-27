@@ -1,5 +1,9 @@
 package com.denofprogramming.service;
 
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
+
+@Service("noneStamped")
 public final class NoneStampedMessageOfTheDayImpl extends AbstractStampedMessageOfTheDay {
 
 	public NoneStampedMessageOfTheDayImpl() {
@@ -18,6 +22,7 @@ public final class NoneStampedMessageOfTheDayImpl extends AbstractStampedMessage
 	}
 
 	@Override
+	@Value("None Stamed Message!!")
 	public void setMessage(String message) {
 		super.setMessage(message);
 	}

@@ -1,12 +1,30 @@
 package com.denofprogramming.service;
 
+import javax.annotation.Resource;
+import javax.inject.Inject;
+import javax.inject.Named;
+
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 
+@Service("printer")
 public class MessagePrinter implements InitializingBean, DisposableBean{
 
+	@Value("My printer service")
 	private String name;
+	
+	@Value(">>")
 	private String separator;
+	
+	//@Autowired
+	//@Qualifier("timeStamped")
+	//@Resource(name="timeStamped")
+	@Inject()
+	@Named("noneStamped")
 	private MessageOfTheDayService service;
 
 	public MessagePrinter() {
