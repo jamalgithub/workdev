@@ -10,6 +10,13 @@
 	
 	<context:component-scan base-package="com.denofprogramming.service" />
 
+	<!-- Turn spring events asynchronous : the listener will asynchronously deal with the even in a separate thread -->
+	<bean id="applicationEventMulticaster" class="org.springframework.context.event.SimpleApplicationEventMulticaster">
+		<property name="taskExecutor">
+			<bean class="org.springframework.core.task.SimpleAsyncTaskExecutor"/>
+		</property>
+	</bean>
+
 	<bean class="com.denofprogramming.service.processors.PrinterCheckerPostProcessor"></bean>
 	<bean class="com.denofprogramming.service.processors.MessageCheckerPostProcessor"></bean>
 	<bean class="com.denofprogramming.service.processors.MessageCheckerPostProcessor2" p:order="1"></bean>

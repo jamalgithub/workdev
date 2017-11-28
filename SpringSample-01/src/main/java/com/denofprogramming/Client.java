@@ -16,8 +16,9 @@ public class Client {
 			context.registerShutdownHook();						
 			MessagePrinter printer = context.getBean(MessagePrinter.class);
 			
-			//doing something part...
+			context.start();
 			printer.printMessage();
+			context.stop();
 			
 		}catch(final Exception ex){
 			ex.printStackTrace();
