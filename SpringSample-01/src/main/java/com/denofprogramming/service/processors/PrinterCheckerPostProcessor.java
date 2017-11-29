@@ -4,7 +4,7 @@ import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.core.PriorityOrdered;
 
-import com.denofprogramming.service.MessagePrinter;
+import com.denofprogramming.service.MessagePrinterImpl;
 
 public class PrinterCheckerPostProcessor implements BeanPostProcessor, PriorityOrdered {
 
@@ -20,7 +20,7 @@ public class PrinterCheckerPostProcessor implements BeanPostProcessor, PriorityO
 
 	public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
 
-		if (bean instanceof MessagePrinter) {
+		if (bean instanceof MessagePrinterImpl) {
 			System.out.println("PrinterCheckerPostProcessor-->BeforeInitialization : " + beanName);
 		}
 		return bean;
@@ -28,7 +28,7 @@ public class PrinterCheckerPostProcessor implements BeanPostProcessor, PriorityO
 
 	public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
 
-		if (bean instanceof MessagePrinter) {
+		if (bean instanceof MessagePrinterImpl) {
 			System.out.println("PrinterCheckerPostProcessor-->AfterInitialization : " + beanName);
 		}
 		return bean;

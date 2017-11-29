@@ -4,6 +4,7 @@ package com.denofprogramming;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.denofprogramming.service.MessagePrinter;
+import com.denofprogramming.service.audit.AuditLog;
 
 public class Client {	
 
@@ -17,13 +18,19 @@ public class Client {
 			MessagePrinter printer = context.getBean(MessagePrinter.class);
 			
 			context.start();
+			
+			printer.printAndReturnMessage();
 			printer.printMessage();
+			printer.printMessage("test", 10.0);
+			printer.myTest();
+			
+			((AuditLog)printer).output();
+			
 			context.stop();
 			
 		}catch(final Exception ex){
 			ex.printStackTrace();
 		}
 		
-
 	}
 }
