@@ -5,6 +5,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.denofprogramming.service.MessagePrinter;
 import com.denofprogramming.service.audit.AuditLog;
+import com.denofprogramming.service.audit.Counter;
 
 public class Client {	
 
@@ -20,11 +21,15 @@ public class Client {
 			context.start();
 			
 			printer.printAndReturnMessage();
+			printer.printAndReturnMessage();
+			printer.printAndReturnMessage();
+			
 			printer.printMessage();
 			printer.printMessage("test", 10.0);
 			printer.myTest();
 			
 			((AuditLog)printer).output();
+			System.out.println("Print methods called: " + ((Counter)printer).getCount() + " times!!");
 			
 			context.stop();
 			

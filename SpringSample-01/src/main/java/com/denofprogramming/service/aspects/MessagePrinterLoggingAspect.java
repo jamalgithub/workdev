@@ -13,6 +13,7 @@ import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
 
 import com.denofprogramming.service.audit.AuditLog;
+import com.denofprogramming.service.audit.Counter;
 
 @Component
 @Aspect
@@ -67,5 +68,11 @@ public class MessagePrinterLoggingAspect {
 	public void audit(final JoinPoint jointPoint,  final String result) {
 		final AuditLog auditLog = (AuditLog) jointPoint.getThis();
 		auditLog.addMessage(result);
+	}
+	
+	@After("MessagePrinterPointcuts.counterOperation()")
+	public void increaseCount(final JoinPoint jointPoint) {
+		final Counter counter = (Counter) jointPoint.getThis();
+		counter.increase();
 	}
 }

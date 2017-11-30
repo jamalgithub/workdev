@@ -6,7 +6,7 @@ import org.aspectj.lang.annotation.Pointcut;
 @Aspect
 public class MessagePrinterPointcuts {
 
-	@Pointcut("execution(* com.denofprogramming.service.MessagePrinter.*(..))")
+	@Pointcut("execution(* com.denofprogramming.service.MessagePrinterImpl.*(..))")
 	//@Pointcut("execution(* com.denofprogramming.service.MessagePrinterImpl.printMessage(..))")
 	//@Pointcut("execution(* com.denofprogramming.service.MessagePrinterImpl.printMessage(String, ..))")
 	//@Pointcut("execution(public String com.denofprogramming.service.MessagePrinterImpl.*(..))")
@@ -15,4 +15,7 @@ public class MessagePrinterPointcuts {
 	
 	@Pointcut("execution(* com.denofprogramming.service.MessagePrinter.printAndReturnMessage(..))")
 	public void auditOperation() {}
+	
+	@Pointcut("execution(* com.denofprogramming.service.MessagePrinter.print*(..))")
+	public void counterOperation() {}
 }

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.0.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-4.0.xsd">
+
+
+	<context:component-scan base-package="com.denofprogramming.service" />
+	
+	<!-- Message Value objects -->
+	<bean id="1" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Sunday morning message!" />
+	</bean>
+
+	<bean id="2" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Monday morning message!" />
+	</bean>
+
+	<bean id="3" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Tuesday morning message!" />
+	</bean>
+
+	<bean id="4" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Wednesday morning message!" />
+	</bean>
+
+	<bean id="5" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Thursday morning message!" />
+	</bean>
+
+	<bean id="6" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Friday morning message!" />
+	</bean>
+
+	<bean id="7" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Saturday morning message!" />
+	</bean>
+
+
+</beans>
