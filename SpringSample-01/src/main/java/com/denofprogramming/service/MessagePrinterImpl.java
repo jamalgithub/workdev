@@ -12,7 +12,7 @@ import org.springframework.stereotype.Service;
 
 import com.denofprogramming.service.event.MessagePrintedEvent;
 
-@Service("printer")
+@Service("liveMessagePrinter")
 public final class MessagePrinterImpl implements InitializingBean, DisposableBean, MessagePrinter {
 
 	@Value("My printer service")

@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:c="http://www.springframework.org/schema/c"
+	default-init-method="init" default-destroy-method="destroy"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd
+		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd">
+	
+	<!-- <aop:aspectj-autoproxy/> -->
+	
+	<!-- <context:component-scan base-package="com.denofprogramming.service" /> -->
+
+	<!-- Turn spring events asynchronous : the listener will asynchronously deal with the even in a separate thread -->
+	<bean id="applicationEventMulticaster" class="org.springframework.context.event.SimpleApplicationEventMulticaster">
+		<property name="taskExecutor">
+			<bean class="org.springframework.core.task.SimpleAsyncTaskExecutor"/>
+		</property>
+	</bean>
+
+	<bean class="com.denofprogramming.service.processors.PrinterCheckerPostProcessor"></bean>
+	<bean class="com.denofprogramming.service.processors.MessageCheckerPostProcessor"></bean>
+	<bean class="com.denofprogramming.service.processors.MessageCheckerPostProcessor2" p:order="1"></bean>
+	
+	<!-- <bean id="abstractStampedMessageOfTheDay" class="com.denofprogramming.service.AbstractStampedMessageOfTheDay"
+		p:message="Hello from the Den" init-method="init" destroy-method="destroy" abstract="true"/>
+	
+	<bean id="noneStamped" parent="abstractStampedMessageOfTheDay" class="com.denofprogramming.service.NoneStampedMessageOfTheDayImpl" p:message="None Stamed Message!!"/>
+	<bean id="timeStamped" parent="abstractStampedMessageOfTheDay" class="com.denofprogramming.service.TimeStampedMessageOfTheDayImpl" p:message="Time Stamed Message!!"/> -->
+	
+	<bean id="basicMessageOfDay" class="com.denofprogramming.service.BasicMessageOfTheDayImpl"
+		p:message="Hello from the Den" init-method="init" destroy-method="destroy"/>			
+
+	<bean id="dynamicMessageOfDay" class="com.denofprogramming.service.DynamicMessageOfTheDayImpl">		
+		<!-- <constructor-arg>
+			<array>
+				<value>"Sunday morning message!"</value>				
+				<value>"Monday morning message!"</value>				
+				<value>"Tuesday morning message!"</value>				
+				<value>"Wednesday morning message!"</value>				
+				<value>"Thursday morning message!"</value>				
+				<value>"Friday morning message!"</value>				
+				<value>"Saturday morning message!"</value>
+			</array>
+		</constructor-arg> -->
+		<!-- <constructor-arg>
+			<array>
+				<ref bean="1" />
+				<ref bean="2" />
+				<ref bean="3" />
+				<ref bean="4" />
+				<ref bean="5" />
+				<ref bean="6" />
+				<ref bean="7" />
+			</array>
+		</constructor-arg> -->
+		<!-- <property name="messagesArray">
+			<array>
+				<value>"Sunday morning message!"</value>				
+				<value>"Monday morning message!"</value>				
+				<value>"Tuesday morning message!"</value>				
+				<value>"Wednesday morning message!"</value>				
+				<value>"Thursday morning message!"</value>				
+				<value>"Friday morning message!"</value>				
+				<value>"Saturday morning message!"</value>				
+			</array>
+		</property> -->
+		<!-- <property name="messagesValueArray">
+			<array>
+				<ref bean="1" />
+				<ref bean="2" />
+				<ref bean="3" />
+				<ref bean="4" />
+				<ref bean="5" />
+				<ref bean="6" />
+				<ref bean="7" />
+			</array>
+		</property> -->
+		<!-- <property name="messagesList">
+			<list>
+				<value>"Sunday morning message!"</value>				
+				<value>"Monday morning message!"</value>				
+				<value>"Tuesday morning message!"</value>				
+				<value>"Wednesday morning message!"</value>				
+				<value>"Thursday morning message!"</value>				
+				<value>"Friday morning message!"</value>				
+				<value>"Saturday morning message!"</value>
+			</list>
+		</property> -->
+		<!-- <property name="messagesValueList">
+			<list>
+				<ref bean="1" />
+				<ref bean="2" />
+				<ref bean="3" />
+				<ref bean="4" />
+				<ref bean="5" />
+				<ref bean="6" />
+				<ref bean="7" />
+			</list>
+		</property> -->
+		<!-- <property name="messagesMap">
+			<map>
+				<entry key="1" value="Sunday morning message!"/>
+				<entry key="2" value="Monday morning message!"/>
+				<entry key="3" value="Tuesday morning message!"/>
+				<entry key="4" value="Wednesday morning message!"/>
+				<entry key="5" value="Thursday morning message!"/>
+				<entry key="6" value="Friday morning message!"/>
+				<entry key="7" value="Saturday morning message!"/>
+			</map>
+		</property> -->
+		<property name="messagesValueMap">
+			<map>
+				<entry key="1" value-ref="1"/>				
+				<entry key="2" value-ref="2"/>				
+				<entry key="3" value-ref="3"/>				
+				<entry key="4" value-ref="4"/>				
+				<entry key="5" value-ref="5"/>				
+				<entry key="6" value-ref="6"/>				
+				<entry key="7" value-ref="7"/>				
+			</map>
+		</property>
+	</bean>
+
+	<!-- <bean id="printer" class="com.denofprogramming.service.MessagePrinter"
+		c:name="My printer service" c:separator=">>" c:service-ref="noneStamped" /> -->
+
+
+	<!-- Message Value objects -->
+	<!-- <bean id="1" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Sunday morning message!" />
+	</bean>
+
+	<bean id="2" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Monday morning message!" />
+	</bean>
+
+	<bean id="3" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Tuesday morning message!" />
+	</bean>
+
+	<bean id="4" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Wednesday morning message!" />
+	</bean>
+
+	<bean id="5" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Thursday morning message!" />
+	</bean>
+
+	<bean id="6" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Friday morning message!" />
+	</bean>
+
+	<bean id="7" class="com.denofprogramming.model.MessageValue">
+		<constructor-arg value="Saturday morning message!" />
+	</bean> -->
+
+
+</beans>
