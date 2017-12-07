@@ -16,7 +16,8 @@ public class Client {
 		try{
 			context = new ClassPathXmlApplicationContext("/spring/application.xml");
 			context.registerShutdownHook();						
-			MessagePrinter printer = context.getBean(MessagePrinter.class);
+			//MessagePrinter printer = context.getBean(MessagePrinter.class);
+			MessagePrinter printer = (MessagePrinter) context.getBean("liveMessagePrinter");
 			
 			context.start();
 			

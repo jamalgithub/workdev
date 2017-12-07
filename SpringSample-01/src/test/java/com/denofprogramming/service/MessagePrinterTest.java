@@ -12,12 +12,12 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
-@ContextConfiguration(locations = "/spring/test-application.xml")
+@ContextConfiguration(locations = {"/spring/test-application.xml"})
 public class MessagePrinterTest {
 
 	@Inject
-	//@Named("liveMessagePrinter")
-	@Named("mockMessagePrinter")
+	@Named("liveMessagePrinter")
+	//@Named("mockMessagePrinter")
 	private MessagePrinter messagePrinter;
 	
 	@Test

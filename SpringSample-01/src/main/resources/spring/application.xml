@@ -14,6 +14,12 @@
 	
 	<context:component-scan base-package="com.denofprogramming.service" />
 
+	<context:property-placeholder location="classpath:/spring/live-config.properties"/>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n/messages"></property>
+	</bean>
+
 	<!-- Turn spring events asynchronous : the listener will asynchronously deal with the even in a separate thread -->
 	<bean id="applicationEventMulticaster" class="org.springframework.context.event.SimpleApplicationEventMulticaster">
 		<property name="taskExecutor">

@@ -15,17 +15,18 @@ import com.denofprogramming.service.event.MessagePrintedEvent;
 @Service("liveMessagePrinter")
 public final class MessagePrinterImpl implements InitializingBean, DisposableBean, MessagePrinter {
 
-	@Value("My printer service")
+	@Value("${messageprinter.name}")
 	private String name;
 
-	@Value(">>")
+	@Value("${messageprinter.separator}")
 	private String separator;
 
 	// @Autowired
 	// @Qualifier("timeStamped")
 	// @Resource(name="timeStamped")
 	@Inject()
-	@Named("noneStamped")
+	//@Named("noneStamped")
+	@Named("i18nDynamicMessageOfDay")
 	private MessageOfTheDayService service;
 
 	@Autowired

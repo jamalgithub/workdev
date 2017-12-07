@@ -13,6 +13,11 @@
 
 	<context:component-scan base-package="com.denofprogramming.service" />
 
+	<context:property-placeholder location="classpath:/spring/test-config.properties"/>
+	
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="i18n/messages"></property>
+	</bean>
 
 	<!-- Message Value objects -->
 	<bean id="1" class="com.denofprogramming.model.MessageValue">

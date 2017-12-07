@@ -14,12 +14,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import com.denofprogramming.config.TestConfig;
 
 @RunWith(value = SpringJUnit4ClassRunner.class)
-@ContextConfiguration(classes = TestConfig.class)
+@ContextConfiguration(classes = {TestConfig.class})
 public class MessagePrinterJavaConfigTest {
 
 	@Inject
-	//@Named("liveMessagePrinter")
-	@Named("mockMessagePrinter")
+	@Named("liveMessagePrinter")
+	//@Named("mockMessagePrinter")
 	private MessagePrinter messagePrinter;
 	
 	@Test

@@ -7,7 +7,6 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.EnableAspectJAutoProxy;
 import org.springframework.context.annotation.Import;
-import org.springframework.context.annotation.ImportResource;
 
 import com.denofprogramming.service.MessagePrinter;
 import com.denofprogramming.service.MockMessagePrinterImpl;
@@ -17,6 +16,7 @@ import com.denofprogramming.service.config.MessageValueConfig;
 @EnableAspectJAutoProxy
 @ComponentScan("com.denofprogramming.service")
 @Import({MessagePrinterConfig.class, ServiceConfig.class})
+//@Import({MessagePrinterConfig.class, ServiceConfig.class, MessageValueConfig.class})
 //@ImportResource("/spring/application2.xml")
 public class AppConfig {
 
