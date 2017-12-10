@@ -21,6 +21,8 @@ public class MessageSourceXmlExample {
 
         MyBean bean = context.getBean(MyBean.class);
         bean.doSomething();
+        
+        context.close();
     }
 
     @Configuration

@@ -20,6 +20,7 @@ public class MessageSourceViaContextExample {
 
         System.out.println(context.getMessage("app.name", new Object[]{"Joe"}, Locale.getDefault()));
 
+        context.close();
     }
 
     @Configuration

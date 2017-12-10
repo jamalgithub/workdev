@@ -10,15 +10,16 @@ import org.springframework.context.support.ResourceBundleMessageSource;
 import java.io.IOException;
 import java.util.Locale;
 
-public class MessageSourceAwareExample {
+public class MessageSourceAwareExample{
     public static void main (String[] args) throws IOException {
         Locale.setDefault(Locale.US);
         //uncomment next line to change the locale
         //   Locale.setDefault(Locale.FRANCE);
-        AnnotationConfigApplicationContext context =
-                            new AnnotationConfigApplicationContext(Config.class);
+        AnnotationConfigApplicationContext context = new AnnotationConfigApplicationContext(Config.class);
         MyBean bean = context.getBean(MyBean.class);
         bean.doSomething();
+        
+        context.close();
     }
 
 
@@ -33,7 +34,7 @@ public class MessageSourceAwareExample {
         @Bean
         public MessageSource messageSource () {
             ResourceBundleMessageSource messageSource = new ResourceBundleMessageSource();
-            messageSource.setBasename("messages/msg");
+            messageSource.setBasename("i18n.messages/msg");
             return messageSource;
         }
     }
@@ -42,8 +43,7 @@ public class MessageSourceAwareExample {
         private MessageSource messageSource;
 
         public void doSomething () {
-            System.out.println(messageSource.getMessage("app.name", new Object[]{"Joe"},
-                                                        Locale.getDefault()));
+            System.out.println(messageSource.getMessage("app.name", new Object[]{"Joe"}, Locale.getDefault()));
         }
 
         @Override
