@@ -22,7 +22,7 @@
 		<a href="${contextPath}/home2" style="font-size: 20px">Click here to go to the test bed for @Model Attribute annotation</a><br/>
 		<a href="${contextPath}/visitorRegister/home" style="font-size: 20px">Click here to go to the test bed for @Session Attribute annotation</a><br/>
 		<a href="${contextPath}/formTagsDemo/home" style="font-size: 20px">Click here to go to the test bed for Form Tags</a><br/>
-		<a href="${contextPath}/formValidationDemo/home" style="font-size: 20px">Click here to go to the test bed for Form Validation</a>
+		<a href="${contextPath}/formValidationDemo/home" style="font-size: 20px">Click here to go to the test bed for Form Validation</a><br/>
 	</div>		
 </body>
 </html>

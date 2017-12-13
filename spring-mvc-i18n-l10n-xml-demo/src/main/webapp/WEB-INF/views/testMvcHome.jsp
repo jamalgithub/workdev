@@ -22,7 +22,9 @@
 		<a href="${contextPath}/home2" style="font-size: 20px">Click here to go to the test bed for @Model Attribute annotation</a><br/>
 		<a href="${contextPath}/visitorRegister/home" style="font-size: 20px">Click here to go to the test bed for @Session Attribute annotation</a><br/>
 		<a href="${contextPath}/formTagsDemo/home" style="font-size: 20px">Click here to go to the test bed for Form Tags</a><br/>
-		<a href="${contextPath}/formValidationDemo/home" style="font-size: 20px">Click here to go to the test bed for Form Validation</a>
+		<a href="${contextPath}/formValidationDemo/home" style="font-size: 20px">Click here to go to the test bed for Form Validation</a><br/>
+		<a href="${contextPath}/redirectAndForwardDemo/home" style="font-size: 20px">Click here to go to the test bed for Redirect and Forward</a><br/>
+		<a href="${contextPath}/i18nL10nDemo/home" style="font-size: 20px">Click here to go to the test bed for Internationalization (i18n) and Localization (L10n)</a><br/>
 	</div>		
 </body>
 </html>
