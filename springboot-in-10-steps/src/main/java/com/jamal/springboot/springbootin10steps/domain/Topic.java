@@ -1,4 +1,4 @@
-package com.jamal.springboot.springbootin10steps.topic;
+package com.jamal.springboot.springbootin10steps.domain;
 
 public class Topic {
 

@@ -1,10 +1,12 @@
-package com.jamal.springboot.springbootin10steps.book;
+package com.jamal.springboot.springbootin10steps.web;
 
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.jamal.springboot.springbootin10steps.domain.Book;
 
 @RestController
 public class BooksController {

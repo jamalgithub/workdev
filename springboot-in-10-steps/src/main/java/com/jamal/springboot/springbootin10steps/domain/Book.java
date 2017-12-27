@@ -1,4 +1,4 @@
-package com.jamal.springboot.springbootin10steps.book;
+package com.jamal.springboot.springbootin10steps.domain;
 
 public class Book {
 	long id;

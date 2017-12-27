@@ -65,7 +65,7 @@
 			<groupId>org.apache.derby</groupId>
 			<artifactId>derby</artifactId>
 			<scope>runtime</scope>
-		</dependency>
+		</dependency>		
 	</dependencies>
 
 	<!-- Package as an executable jar -->

@@ -1,10 +1,12 @@
-package com.jamal.springboot.springbootin10steps.topic;
+package com.jamal.springboot.springbootin10steps.service;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
 import org.springframework.stereotype.Service;
+
+import com.jamal.springboot.springbootin10steps.domain.Topic;
 
 @Service
 public class TopicService {

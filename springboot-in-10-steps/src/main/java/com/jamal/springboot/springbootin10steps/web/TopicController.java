@@ -1,4 +1,4 @@
-package com.jamal.springboot.springbootin10steps.topic;
+package com.jamal.springboot.springbootin10steps.web;
 
 import java.util.List;
 
@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.jamal.springboot.springbootin10steps.domain.Topic;
+import com.jamal.springboot.springbootin10steps.service.TopicService;
 
 @RestController
 public class TopicController {
