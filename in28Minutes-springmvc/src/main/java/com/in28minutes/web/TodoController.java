@@ -1,4 +1,4 @@
-package com.in28minutes.todo;
+package com.in28minutes.web;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -8,6 +8,8 @@ import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -20,12 +22,14 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.in28minutes.model.Todo;
-import com.in28minutes.todo.service.TodoService;
+import com.in28minutes.service.TodoService;
 
 @Controller
 @SessionAttributes("name")
+@RequestMapping("/todo")
 public class TodoController {
-
+	//private Logger logger = Logger.getLogger(ExceptionController.class);
+	
 	@Autowired
 	private TodoService service;
 
@@ -37,13 +41,15 @@ public class TodoController {
 	
 	@RequestMapping(value = "/list-todos", method = RequestMethod.GET)
 	public String showTodosList(ModelMap model) {
-		String user = (String) model.get("name");
+		//String user = (String) model.get("name");
+		String user = getLoggedInUserName();
 		model.addAttribute("todos", service.retrieveTodos(user));
 		return "list-todos";
 	}
 
 	@RequestMapping(value = "/add-todo", method = RequestMethod.GET)
 	public String showTodoPage(ModelMap model) {
+		//throw new RuntimeException("Dummy Exception");
 		model.addAttribute("todo", new Todo());
 		return "todo";
 	}
@@ -56,22 +62,32 @@ public class TodoController {
 	}
 	
 	//@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
-	public String addTodo(@ModelAttribute("name") String name, ModelMap model, @Valid @ModelAttribute("todo") Todo todo, BindingResult result) {
+	public String addTodo_(ModelMap model, @Valid @ModelAttribute("todo") Todo todo, BindingResult result) {
 		if (result.hasErrors())
 			return "todo";
 
-		service.addTodo(name, todo.getDesc(), new Date(), false);
+		service.addTodo(getLoggedInUserName(), todo.getDesc(), new Date(), false);
 		model.clear();// to prevent request parameter "name" to be passed
 		return "redirect:/list-todos";
 	}
 	
-	@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
+	//@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
 	public String addTodo(@ModelAttribute("name") String name, HttpSession session, ModelMap model, @Valid @ModelAttribute("todo") Todo todo, BindingResult result) {
 		if (result.hasErrors())
 			return "todo";
 
 		//String name = (String) session.getAttribute("name"); <=====> @ModelAttribute("name") String name
 		service.addTodo(name, todo.getDesc(), new Date(), false);
+		model.clear();// to prevent request parameter "name" to be passed
+		return "redirect:/list-todos";
+	}
+	
+	@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
+	public String addTodo(ModelMap model, @Valid @ModelAttribute("todo") Todo todo, BindingResult result) {
+		if (result.hasErrors())
+			return "todo";
+
+		service.addTodo(getLoggedInUserName(), todo.getDesc(), new Date(), false);
 		model.clear();// to prevent request parameter "name" to be passed
 		return "redirect:/list-todos";
 	}
@@ -87,7 +103,7 @@ public class TodoController {
 		if (result.hasErrors())
 			return "todo";
 
-		todo.setUser("in28Minutes"); //TODO:Remove Hardcoding Later
+		todo.setUser(getLoggedInUserName());
 		service.updateTodo(todo);
 
 		model.clear();// to prevent request parameter "name" to be passed
@@ -100,4 +116,20 @@ public class TodoController {
 
 		return "redirect:/list-todos";
 	}
+	
+	private String getLoggedInUserName() {
+		Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+		if (principal instanceof UserDetails)
+			return ((UserDetails) principal).getUsername();
+
+		return principal.toString();
+	}
+	
+	/*@ExceptionHandler(value = Exception.class)
+	public String handleException(HttpServletRequest request, Exception ex) {
+		logger.error("Request " + request.getRequestURL() + " Threw an Exception", ex);
+		
+		return "error-specific";
+	}*/
 }

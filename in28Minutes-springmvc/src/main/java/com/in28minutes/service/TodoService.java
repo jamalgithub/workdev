@@ -1,4 +1,4 @@
-package com.in28minutes.todo.service;
+package com.in28minutes.service;
 
 import java.util.ArrayList;
 import java.util.Date;

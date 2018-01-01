@@ -2,7 +2,10 @@
 <%@ include file="common/navigation.jspf"%>
 
 <div class="container">
-	<spring:message code="welcome.message" /> ${name}. <br>You are now authenticated.<br>You can <a href="/todo/list-todos">manage your todos</a>
+	<b>Sum: ${sum} </b><br/>
+	<b>Subtract: ${subtract} </b><br/>
+	<b>Multiply: ${multiply} </b><br/>
+	<b>Divide: ${divide} </b><br/>
 </div>
 
 <%@ include file="common/footer.jspf"%>
