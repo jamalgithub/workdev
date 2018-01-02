@@ -58,7 +58,7 @@ public class TodoController {
 	public String addTodo(ModelMap model, @RequestParam String desc) {
 		service.addTodo((String) model.get("name"), desc, new Date(), false);
 		model.clear();// to prevent request parameter "name" to be passed
-		return "redirect:/list-todos";
+		return "redirect:/todo/list-todos";
 	}
 	
 	//@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
@@ -68,7 +68,7 @@ public class TodoController {
 
 		service.addTodo(getLoggedInUserName(), todo.getDesc(), new Date(), false);
 		model.clear();// to prevent request parameter "name" to be passed
-		return "redirect:/list-todos";
+		return "redirect:/todo/list-todos";
 	}
 	
 	//@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
@@ -79,7 +79,7 @@ public class TodoController {
 		//String name = (String) session.getAttribute("name"); <=====> @ModelAttribute("name") String name
 		service.addTodo(name, todo.getDesc(), new Date(), false);
 		model.clear();// to prevent request parameter "name" to be passed
-		return "redirect:/list-todos";
+		return "redirect:/todo/list-todos";
 	}
 	
 	@RequestMapping(value = "/add-todo", method = RequestMethod.POST)
@@ -89,7 +89,7 @@ public class TodoController {
 
 		service.addTodo(getLoggedInUserName(), todo.getDesc(), new Date(), false);
 		model.clear();// to prevent request parameter "name" to be passed
-		return "redirect:/list-todos";
+		return "redirect:/todo/list-todos";
 	}
 	
 	@RequestMapping(value = "/update-todo", method = RequestMethod.GET)
@@ -107,14 +107,14 @@ public class TodoController {
 		service.updateTodo(todo);
 
 		model.clear();// to prevent request parameter "name" to be passed
-		return "redirect:/list-todos";
+		return "redirect:/todo/list-todos";
 	}
 	
 	@RequestMapping(value = "/delete-todo", method = RequestMethod.GET)
 	public String deleteTodo(@RequestParam int id) {
 		service.deleteTodo(id);
 
-		return "redirect:/list-todos";
+		return "redirect:/todo/list-todos";
 	}
 	
 	private String getLoggedInUserName() {

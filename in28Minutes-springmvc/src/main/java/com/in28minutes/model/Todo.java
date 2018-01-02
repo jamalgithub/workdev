@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 public class Todo {
 	private int id;
 	private String user;
@@ -11,6 +13,7 @@ public class Todo {
 	@Size(min = 10, message = "Enter atleast 10 Characters.")
 	private String desc;
 	
+	@JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd/MM/yyyy")
 	private Date targetDate;
 	private boolean isDone;
 

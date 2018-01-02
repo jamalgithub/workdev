@@ -22,15 +22,15 @@
 					<td><fmt:formatDate pattern="dd/MM/yyyy" value="${todo.targetDate}" /></td>
 					<td>${todo.done}</td>
 					<td>
-						<a type="button" class="btn btn-success" href="/update-todo?id=${todo.id}">Edit</a>
-						<a type="button" class="btn btn-danger" href="/delete-todo?id=${todo.id}">Delete</a>
+						<a type="button" class="btn btn-success" href="/todo/update-todo?id=${todo.id}">Edit</a>
+						<a type="button" class="btn btn-danger" href="/todo/delete-todo?id=${todo.id}">Delete</a>
 					</td>
 				</tr>
 			</c:forEach>
 		</tbody>
 	</table>
 	<div>
-		<a class="btn btn-primary" href="/add-todo">Add</a>
+		<a class="btn btn-primary" href="/todo/add-todo">Add</a>
 	</div>
 </div>
 
