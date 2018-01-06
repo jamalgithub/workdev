@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.01.04 à 02:02:37 PM GMT 
+// Généré le : 2018.01.06 à 04:39:57 PM WET 
 //
 
 
@@ -37,19 +37,11 @@ public class ObjectFactory {
     }
 
     /**
-     * Create an instance of {@link GetCourseDetailsRequest }
+     * Create an instance of {@link GetAllCourseDetailsResponse }
      * 
      */
-    public GetCourseDetailsRequest createGetCourseDetailsRequest() {
-        return new GetCourseDetailsRequest();
-    }
-
-    /**
-     * Create an instance of {@link GetCourseDetailsResponse }
-     * 
-     */
-    public GetCourseDetailsResponse createGetCourseDetailsResponse() {
-        return new GetCourseDetailsResponse();
+    public GetAllCourseDetailsResponse createGetAllCourseDetailsResponse() {
+        return new GetAllCourseDetailsResponse();
     }
 
     /**
@@ -58,6 +50,46 @@ public class ObjectFactory {
      */
     public CourseDetails createCourseDetails() {
         return new CourseDetails();
+    }
+
+    /**
+     * Create an instance of {@link GetAllCourseDetailsRequest }
+     * 
+     */
+    public GetAllCourseDetailsRequest createGetAllCourseDetailsRequest() {
+        return new GetAllCourseDetailsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteCourseDetailsRequest }
+     * 
+     */
+    public DeleteCourseDetailsRequest createDeleteCourseDetailsRequest() {
+        return new DeleteCourseDetailsRequest();
+    }
+
+    /**
+     * Create an instance of {@link GetCourseDetailsRequest }
+     * 
+     */
+    public GetCourseDetailsRequest createGetCourseDetailsRequest() {
+        return new GetCourseDetailsRequest();
+    }
+
+    /**
+     * Create an instance of {@link DeleteCourseDetailsResponse }
+     * 
+     */
+    public DeleteCourseDetailsResponse createDeleteCourseDetailsResponse() {
+        return new DeleteCourseDetailsResponse();
+    }
+
+    /**
+     * Create an instance of {@link GetCourseDetailsResponse }
+     * 
+     */
+    public GetCourseDetailsResponse createGetCourseDetailsResponse() {
+        return new GetCourseDetailsResponse();
     }
 
 }
