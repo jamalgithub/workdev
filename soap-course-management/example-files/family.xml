@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<family xmlns="http://in28minutes.com/family" 
+xsi:schemaLocation="http://in28minutes.com/family family.xsd" 
+xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<person name="Joe Miller" gender="male" type="father" id="I123456789" >
+		<age>100</age>
+		<email>joe12@gmail.com</email>
+	</person>
+	<person name="Josette Miller" type="girl" id="I123456987">
+		<age>52</age>
+		<email>josette23@gmail.com</email>
+	</person>	
+</family>

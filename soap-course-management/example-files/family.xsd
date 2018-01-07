@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://in28minutes.com/family" xmlns:tns="http://in28minutes.com/family"
+	elementFormDefault="qualified">
+
+	<xs:element name="family">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element maxOccurs="unbounded" ref="tns:person" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="person">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="age">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0" />
+							<xs:maxInclusive value="120" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="email">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<!-- too complex <xs:pattern value="\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}\b"/> -->
+							<xs:pattern value="(\w[-._\w]*\w@\w[-._\w]*\w\.\w{2,3})" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+			</xs:sequence>
+			<xs:attributeGroup ref="tns:attlist.person" />
+		</xs:complexType>
+	</xs:element>
+
+	<xs:attributeGroup name="attlist.person">
+		<xs:attribute name="name" use="required">
+			<xs:simpleType>
+				<xs:restriction base="xs:string">
+					<xs:minLength value="5" />
+					<xs:maxLength value="30" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+
+		<xs:attribute name="gender">
+			<xs:simpleType>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="male" />
+					<xs:enumeration value="female" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+
+		<xs:attribute name="type" default="mother">
+			<xs:simpleType>
+				<xs:restriction base="xs:token">
+					<xs:enumeration value="mother" />
+					<xs:enumeration value="father" />
+					<xs:enumeration value="boy" />
+					<xs:enumeration value="girl" />
+				</xs:restriction>
+			</xs:simpleType>
+		</xs:attribute>
+
+		<xs:attribute name="id" use="required" type="xs:ID" />
+	</xs:attributeGroup>
+
+</xs:schema>
