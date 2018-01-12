@@ -17,9 +17,13 @@ import javax.servlet.http.HttpServletResponse;
 
 //DESTROY -> _jspDestroy
 
-@WebServlet(urlPatterns = "/add-todo.do")
+@WebServlet(urlPatterns = "/todo/add-todo.do")
 public class AddTodoServlet extends HttpServlet {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private TodoService todoService = new TodoService();
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -30,6 +34,6 @@ public class AddTodoServlet extends HttpServlet {
 		String newTodo = request.getParameter("todo");
 		String category = request.getParameter("category");
 		todoService.addTodo(new Todo(newTodo, category));
-		response.sendRedirect("/list-todos.do");
+		response.sendRedirect("/todo/list-todos.do");
 	}
 }

@@ -4,7 +4,7 @@
 
 <div class="container">
 	Your New Action Item:
-	<form method="POST" action="/add-todo.do">
+	<form method="POST" action="/todo/add-todo.do">
 		<fieldset class="form-group">
 			<label>Description</label> <input name="todo" type="text"	class="form-control" /> <BR />
 		</fieldset>
