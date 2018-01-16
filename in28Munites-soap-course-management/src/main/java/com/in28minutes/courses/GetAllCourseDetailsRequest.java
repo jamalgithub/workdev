@@ -2,7 +2,7 @@
 // Ce fichier a été généré par l'implémentation de référence JavaTM Architecture for XML Binding (JAXB), v2.2.7 
 // Voir <a href="http://java.sun.com/xml/jaxb">http://java.sun.com/xml/jaxb</a> 
 // Toute modification apportée à ce fichier sera perdue lors de la recompilation du schéma source. 
-// Généré le : 2018.01.06 à 04:39:57 PM WET 
+// Généré le : 2018.01.08 à 11:19:58 AM GMT 
 //
 
 
@@ -23,9 +23,6 @@ import javax.xml.bind.annotation.XmlType;
  * &lt;complexType>
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
- *       &lt;sequence>
- *         &lt;element name="id" type="{http://www.w3.org/2001/XMLSchema}int"/>
- *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
  * &lt;/complexType>
@@ -34,28 +31,9 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "id"
-})
-@XmlRootElement(name = "DeleteCourseDetailsRequest")
-public class DeleteCourseDetailsRequest {
+@XmlType(name = "")
+@XmlRootElement(name = "GetAllCourseDetailsRequest")
+public class GetAllCourseDetailsRequest {
 
-    protected int id;
-
-    /**
-     * Obtient la valeur de la propriété id.
-     * 
-     */
-    public int getId() {
-        return id;
-    }
-
-    /**
-     * Définit la valeur de la propriété id.
-     * 
-     */
-    public void setId(int value) {
-        this.id = value;
-    }
 
 }
