@@ -1,7 +1,11 @@
 package com.in28minutes.rest.webservices.restfulwebservices.exception;
 
 import java.util.Date;
-
+/**
+ * Response Bean to use when exceptions are thrown from API
+ * @author jamal
+ *
+ */
 public class ExceptionResponse {
 	private Date timestamp;
 	private String message;

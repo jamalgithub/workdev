@@ -1,6 +1,8 @@
 package com.in28minutes.rest.webservices.restfulwebservices.user;
 
-import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.linkTo;
+import static org.springframework.hateoas.mvc.ControllerLinkBuilder.methodOn;
+
 import java.net.URI;
 import java.util.List;
 
@@ -18,6 +20,13 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import io.swagger.annotations.ApiOperation;
+
+/**
+ * Spring Rest Controller exposing all services on the user resource.
+ * @author jamal
+ *
+ */
 @RestController
 public class UserResource {
 
@@ -35,6 +44,7 @@ public class UserResource {
 	 * @return User and link to access all users
 	 */
 	@GetMapping("/users/{id}")
+	@ApiOperation(value = "Finds Users by id", notes = "Also returns a link to retrieve all users with rel - all-users")
 	public Resource<User> retrieveUser(@PathVariable int id) {
 		User user =  service.findOne(id);
 		
@@ -76,4 +86,19 @@ public class UserResource {
 		
 		return ResponseEntity.created(location).build();
 	}
+	
+	/*@PutMapping("/users/{id}")
+	public ResponseEntity<Object> updateUser(@RequestBody User user, @PathVariable Integer id) {
+
+		User userOptional = service.findOne(id);
+
+		if (userOptional == null)
+			return ResponseEntity.notFound().build();
+
+		user.setId(id);
+		
+		service.save(userOptional);
+
+		return ResponseEntity.ok().build();
+	}*/
 }

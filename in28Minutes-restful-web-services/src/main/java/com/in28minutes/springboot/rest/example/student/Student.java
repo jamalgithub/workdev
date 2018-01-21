@@ -3,13 +3,31 @@ package com.in28minutes.springboot.rest.example.student;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
+
+/**
+ * Student JPA Entity
+ * @author jamal
+ *
+ */
 @Entity
+@ApiModel(description="All details about the student. ")
 public class Student {
 	@Id
 	@GeneratedValue
 	private Long id;
+	
+	@NotNull
+	@Size(min=2, message="Name should have atleast 2 characters")
+	@ApiModelProperty(notes="Name should have atleast 2 characters")
 	private String name;
+	
+	@NotNull
+	@Size(min=7, message="Passport should have atleast 2 characters")
 	private String passportNumber;
 	
 	public Student() {

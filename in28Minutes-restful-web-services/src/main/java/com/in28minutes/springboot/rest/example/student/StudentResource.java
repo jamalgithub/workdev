@@ -7,6 +7,8 @@ import java.net.URI;
 import java.util.List;
 import java.util.Optional;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.hateoas.Resource;
 import org.springframework.hateoas.mvc.ControllerLinkBuilder;
@@ -20,6 +22,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+/**
+ * Spring Rest Controller exposing all services on the student resource.
+ * @author jamal
+ *
+ */
 @RestController
 public class StudentResource {
 
@@ -53,7 +60,7 @@ public class StudentResource {
 	}
 
 	@PostMapping("/students")
-	public ResponseEntity<Object> createStudent(@RequestBody Student student) {
+	public ResponseEntity<Object> createStudent(@Valid @RequestBody Student student) {
 		Student savedStudent = studentRepository.save(student);
 
 		URI location = ServletUriComponentsBuilder.fromCurrentRequest()
@@ -75,6 +82,6 @@ public class StudentResource {
 		
 		studentRepository.save(student);
 
-		return ResponseEntity.noContent().build();
+		return ResponseEntity.ok().build();
 	}
 }
