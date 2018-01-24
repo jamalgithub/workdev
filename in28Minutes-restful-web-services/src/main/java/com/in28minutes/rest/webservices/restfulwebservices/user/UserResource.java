@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 
 /**
@@ -28,12 +29,14 @@ import io.swagger.annotations.ApiOperation;
  *
  */
 @RestController
+@Api(description = "Rest API for user operations")
 public class UserResource {
 
 	@Autowired
 	private UserDaoService service;
 
 	@GetMapping("/users")
+	@ApiOperation(value = "Find all Users", notes = "Returns a list of all users")
 	public List<User> retrieveAllUsers() {
 		return service.findAll();
 	}
@@ -44,7 +47,7 @@ public class UserResource {
 	 * @return User and link to access all users
 	 */
 	@GetMapping("/users/{id}")
-	@ApiOperation(value = "Finds Users by id", notes = "Also returns a link to retrieve all users with rel - all-users")
+	@ApiOperation(value = "Find User by id", notes = "Also returns a link to retrieve all users with rel - all-users")
 	public Resource<User> retrieveUser(@PathVariable int id) {
 		User user =  service.findOne(id);
 		
@@ -65,6 +68,7 @@ public class UserResource {
 	}
 	
 	@DeleteMapping("/users/{id}")
+	@ApiOperation(value = "Delete User by id")
 	public void deleteUser(@PathVariable int id) {
 		User user = service.deleteById(id);
 		
@@ -75,6 +79,7 @@ public class UserResource {
 	// input - details of user
 	// output - CREATED & Return the created URI
 	@PostMapping("/users")
+	@ApiOperation(value = "Create a new User", notes = "Also returns the created URI to access the created User")
 	public ResponseEntity<Object> createUser(@Valid @RequestBody User user){
 		User savedUser = service.save(user);
 		// CREATED

@@ -9,7 +9,7 @@ import javax.validation.constraints.Size;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
-@ApiModel(value="User Details", description="Contains all details of a user")
+@ApiModel(value="User", description="Contains all details of a user")
 public class User {
 
 	private Integer id;
