@@ -91,6 +91,7 @@ public class CourseRepository {
 		review2.setCourse(course);
 		
 		//save it to the database
+		//persist the owning side of the relationship
 		em.persist(review1);
 		em.persist(review2);
 	}

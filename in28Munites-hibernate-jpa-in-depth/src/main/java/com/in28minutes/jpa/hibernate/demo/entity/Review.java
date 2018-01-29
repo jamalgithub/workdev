@@ -16,7 +16,7 @@ public class Review {
 
 	private String description;
 	
-	@ManyToOne
+	@ManyToOne //***ToOne : dehault is Eager fetching
 	private Course course;
 
 	protected Review() {

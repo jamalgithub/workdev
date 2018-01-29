@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.in28minutes.jpa.hibernate.demo.entity.Course;
 import com.in28minutes.jpa.hibernate.demo.entity.Passport;
 import com.in28minutes.jpa.hibernate.demo.entity.Student;
 
@@ -69,4 +70,27 @@ public class StudentRepository {
 		//Persistence Context (student++ , passport++)
 	}
 
+	public void insertHardcodedStudentAndCourse(){
+		Student student = new Student("Jack");
+		Course course = new Course("Microservices in 100 Steps");
+		em.persist(student);
+		em.persist(course);
+		
+		//set the relationship between Student and Course
+		student.addCourse(course);
+		course.addStudent(student);
+		
+		//persist the owning side of the relationship
+		em.persist(student);
+	}
+
+	public void insertStudentAndCourse(Student student, Course course){
+		//set the relationship between Student and Course
+		student.addCourse(course);
+		course.addStudent(student);
+
+		//for manyToMany relationship we persist all the sides
+		em.persist(student);
+		em.persist(course);
+	}
 }
