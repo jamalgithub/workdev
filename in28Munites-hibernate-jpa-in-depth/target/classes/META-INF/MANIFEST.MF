@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: jpa-in-10-steps
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: jamal
+Implementation-Vendor-Id: com.in28minutes.learning.jpa
+Build-Jdk: 1.8.0_121
+Implementation-URL: http://projects.spring.io/spring-boot/spring-boot-
+ starter-parent/jpa-in-10-steps/
+Created-By: Maven Integration for Eclipse
+
