@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.2.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<http auto-config="true">
+		<intercept-url pattern="/**" access="hasRole('ROLE_USER')" />
+	</http>
+
+	<authentication-manager>
+		<!-- <authentication-provider user-service-ref="userDetailsService"/> -->
+		<authentication-provider>
+			<jdbc-user-service data-source-ref="dataSource"/>
+		</authentication-provider>
+	</authentication-manager>
+
+	<!-- <beans:bean id="userDetailsService" class="org.springframework.security.core.userdetails.jdbc.JdbcDaoImpl">
+		<beans:property name="dataSource" ref="dataSource"/>
+	</beans:bean> -->
+	
+	<context:property-placeholder location="classpath:/db.properties" />
+	
+	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+		<beans:property name="username" value="${jdbc.userName}"/>
+		<beans:property name="password" value="${jdbc.password}"/>
+		<beans:property name="driverClassName" value="${jdbc.driverClassName}"/>
+		<beans:property name="url" value="${jdbc.url}"/>
+	</beans:bean>
+	
+</beans:beans>
