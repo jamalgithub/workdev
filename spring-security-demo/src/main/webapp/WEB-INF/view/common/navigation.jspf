@@ -1,0 +1,28 @@
+<nav role="navigation" class="navbar navbar-default">
+
+	<div class="">
+		<a href="${contextPath}/" class="navbar-brand">in28Minutes</a>
+	</div>
+
+	<div class="navbar-collapse">
+		<ul class="nav navbar-nav">
+			<li class="active"><a href="${contextPath}/login">Home</a></li>
+			<li><a href="${contextPath}/todo/list-todos">Todos</a></li>
+			<li><a href="${contextPath}/math/calculate?a=2&b=3">operation1</a></li>
+			<li><a href="${contextPath}/math/calculate?a=2&b=0">operation2</a></li>
+			<li><a href="${contextPath}/math/calculate?a=2&b=az">operation3</a></li>
+		</ul>
+		<ul class="nav navbar-nav navbar-right">			
+			<li>
+				<a class="lang" href="?language=en" title='<spring:message code="label.en" />'>
+					<img alt="" src='<c:url value="${contextPath}/resources/uk_32.png" />'>
+				</a>
+				<a class="lang" href="?language=fr" title='<spring:message code="label.fr" />'>
+					<img alt="" src='<c:url value="${contextPath}/resources/fr_32.png" />'>
+				</a>
+			</li>
+			<li><a href="${contextPath}/logout">Logout</a></li>
+		</ul>
+	</div>
+
+</nav>
