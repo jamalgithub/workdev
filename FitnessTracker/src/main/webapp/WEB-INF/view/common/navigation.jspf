@@ -7,5 +7,9 @@
       <li class="active"><a href="${contextPath}/addGoal">Add Goal</a></li>
       <li><a href="${contextPath}/addMinutes">Add Minutes</a></li>
     </ul>
+    
+    <ul class="nav navbar-nav navbar-right">
+      <li><a href="${contextPath}/logout"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
   </div>
 </nav>

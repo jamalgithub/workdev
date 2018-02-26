@@ -55,8 +55,8 @@
 	
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource" p:basename="messages" p:defaultEncoding="UTF-8"></bean>
 	
-	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/view/" p:suffix=".jsp" p:order="2"/>
+	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver" p:prefix="/WEB-INF/view/" p:suffix=".jsp"/>
 	 	
-	<bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0"/>
+	<!-- <bean class="org.springframework.web.servlet.view.BeanNameViewResolver" p:order="0"/> -->
 
 </beans>

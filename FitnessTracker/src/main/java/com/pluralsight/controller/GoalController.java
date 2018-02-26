@@ -36,7 +36,7 @@ public class GoalController {
 			return "addGoal";
 		}
 		
-		return "redirect:index.jsp";
+		return "redirect:/";
 	}
 	
 }

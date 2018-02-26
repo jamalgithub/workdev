@@ -10,17 +10,21 @@
 
 	<http auto-config="true">
 		<intercept-url pattern="/webjars/**" access="permitAll" />
-		<intercept-url pattern="/login.html" access="hasRole('ANONYMOUS')"/>
+		<intercept-url pattern="/login" access="hasRole('ANONYMOUS')"/>
 		<!-- <intercept-url pattern="/loginFailed.html" access="hasRole('ANONYMOUS')"/> -->
-		<!-- <intercept-url pattern="/logout.html" access="hasRole('ANONYMOUS')"/> -->
+		<!-- <intercept-url pattern="/logout" access="hasRole('ANONYMOUS')"/> -->
 		<!-- <intercept-url pattern="/403.html" access="IS_AUTHENTICATED_ANONYMOUSLY"/>  -->
+		<!-- <intercept-url pattern="/**" access="isAuthenticated()" /> -->
+		<intercept-url pattern="/addGoal" access="hasRole('USER')" />
+		<intercept-url pattern="/editGoal" access="hasRole('ADMIN')" />
+		<intercept-url pattern="/addMinutes" access="hasRole('USER')" />
 		<intercept-url pattern="/**" access="hasRole('USER')" />
 		
-		<form-login login-page="/login.html" login-processing-url="/loginAction.html"/>
+		<form-login login-page="/login" login-processing-url="/loginAction"/>
 		
-		<logout logout-url="/login.html"/>
+		<logout />
 		
-		<access-denied-handler error-page="/403.html"/>
+		<access-denied-handler error-page="/access-denied"/>
 	</http>
 	
 	<authentication-manager>
@@ -37,14 +41,14 @@
 	
 	<context:property-placeholder location="classpath:/db.properties" />
 	
-	<beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
+	<!-- <beans:bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">
 		<beans:property name="username" value="${jdbc.userName}"/>
 		<beans:property name="password" value="${jdbc.password}"/>
 		<beans:property name="driverClassName" value="${jdbc.driverClassName}"/>
 		<beans:property name="url" value="${jdbc.url}"/>
-	</beans:bean>
+	</beans:bean> -->
 	
-	<!-- <beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
+	<beans:bean id="dataSource" class="com.mchange.v2.c3p0.ComboPooledDataSource">
 		<beans:property name="driverClass" value="${jdbc.driverClassName}"/>
 		<beans:property name="jdbcUrl" value="${jdbc.url}"/>
 		<beans:property name="user" value="${jdbc.userName}"/>
@@ -54,6 +58,6 @@
 		<beans:property name="minPoolSize" value="${connection.pool.minPoolSize}"/>
 		<beans:property name="maxPoolSize" value="${connection.pool.maxPoolSize}"/>
 		<beans:property name="maxIdleTime" value="${connection.pool.maxIdleTime}"/>
-	</beans:bean> -->
+	</beans:bean>
 	
 </beans:beans>

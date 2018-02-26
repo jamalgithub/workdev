@@ -14,12 +14,7 @@
 
 	<link href="${contextPath}/webjars/bootstrap/3.3.7-1/css/bootstrap.min.css" rel="stylesheet">
 
-	<style>
-		body {
-			padding-top: 60px; /* 60px to make the container go all the way
-		      to the bottom of the topbar */
-		}
-		
+	<style>		
 		.error {
 			color: #ff0000;
 		}
@@ -35,4 +30,4 @@
 	
 </head>
 
-<body onload='document.f.j_username.focus();'>
+<body>
