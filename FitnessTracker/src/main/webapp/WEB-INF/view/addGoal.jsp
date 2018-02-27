@@ -20,3 +20,7 @@
 </div>
 
 <%@ include file="common/footer.jspf"%>
+
+<script type="text/javascript">
+	$("body").css("padding-top", "60px");
+</script>

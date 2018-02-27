@@ -35,6 +35,8 @@
 <%@ include file="common/footer.jspf"%>
 
 <script type="text/javascript">
+	$("body").css("padding-top", "60px");
+	
 	$(document).ready(
 		function() {
 			$.getJSON(
