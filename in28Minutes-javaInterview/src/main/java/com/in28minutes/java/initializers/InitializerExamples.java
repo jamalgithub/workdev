@@ -10,8 +10,7 @@ public class InitializerExamples {
 		System.out.println("Instance Initializer");
 		i = 6;
 		count = count + 1;
-		System.out
-				.println("Count when Instance Initializer is run is " + count);
+		System.out.println("Count when Instance Initializer is run is " + count);
 	}
 
 	static {
@@ -20,6 +19,11 @@ public class InitializerExamples {
 		System.out.println("Static Initializer");
 		// i = 6;//COMPILER ERROR
 		System.out.println("Count when Static Initializer is run is " + count);
+	}		
+
+	public InitializerExamples() {
+		super();
+		System.out.println("Constructor called");
 	}
 
 	public static void main(String[] args) {

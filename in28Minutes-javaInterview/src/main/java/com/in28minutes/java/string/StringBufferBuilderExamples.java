@@ -20,6 +20,7 @@ public class StringBufferBuilderExamples {
 		StringBuilder sb2 = new StringBuilder("abcdefgh");
 		// StringBuilder reverse()
 		System.out.println(sb2.reverse());// hgfedcba
+		System.out.println(sb2);
 
 		// Similar functions exist in StringBuffer also
 

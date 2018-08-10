@@ -94,6 +94,6 @@ public class InnerClassExamples {
 
 		// To create an Inner Class you need an instance of Outer Class
 		OuterClass.InnerClass innerClass = example.new InnerClass();
-
+		innerClass.privateVariablesOfOuterClassAreAvailable();
 	}
 }

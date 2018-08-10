@@ -15,7 +15,7 @@ class SuperClass {
 	}
 }
 
-class SubClass {
+class SubClass extends SuperClass{
 	// Cannot reduce visibility of SuperClass Method
 	// So, only option is public
 	// Cannot throw bigger exceptions than Super Class

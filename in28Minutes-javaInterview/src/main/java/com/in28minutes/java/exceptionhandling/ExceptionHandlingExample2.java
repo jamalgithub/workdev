@@ -26,8 +26,7 @@ class AmountAdder {
 public class ExceptionHandlingExample2 {
 	public static void main(String[] args) {
 		try {
-			AmountAdder.addAmounts(new Amount("RUPEE", 5), new Amount("RUPEE",
-					5));
+			AmountAdder.addAmounts(new Amount("RUPEE2", 5), new Amount("RUPEE", 5));
 			String string = null;
 			string.toString();
 		} catch (CurrenciesDoNotMatchException e) {

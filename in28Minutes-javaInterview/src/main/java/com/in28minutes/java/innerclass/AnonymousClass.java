@@ -7,7 +7,7 @@ class Animal {
 	void bark() {
 		System.out.println("Animal Bark");
 	}
-};
+}
 
 public class AnonymousClass {
 

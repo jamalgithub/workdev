@@ -79,6 +79,6 @@ public class StaticModifierExamples {
 
 		Animal animal = new Dog();
 		animal.StaticMethod();// Animal Static Method
-
+		new Dog().StaticMethod();
 	}
 }

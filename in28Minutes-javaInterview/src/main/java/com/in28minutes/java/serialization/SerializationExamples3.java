@@ -12,6 +12,7 @@ class Actor {
 
 	Actor() {
 		name = "Default";
+		System.out.println("Actor constractor");
 	}
 }
 
@@ -20,13 +21,13 @@ class Hero extends Actor implements Serializable {
 
 	Hero() {
 		danceType = "Default";
+		System.out.println("Hero constractor");
 	}
 }
 
 public class SerializationExamples3 {
 
-	public static void main(String[] args) throws IOException,
-			ClassNotFoundException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 
 		FileOutputStream fileStream = new FileOutputStream("Hero.ser");
 		ObjectOutputStream objectStream = new ObjectOutputStream(fileStream);
@@ -36,16 +37,14 @@ public class SerializationExamples3 {
 		hero.name = "Hero1";
 
 		// Before -> DanceType :Ganganam Name:Hero1
-		System.out.println("Before -> DanceType :" + hero.danceType + " Name:"
-				+ hero.name);
+		System.out.println("Before Serialization -> DanceType :" + hero.danceType + " Name:" + hero.name);
 		// Exception in thread "main" java.io.NotSerializableException:
 		// com.rithus.serialization.Wall
 		objectStream.writeObject(hero);
 		objectStream.close();
 
 		FileInputStream fileInputStream = new FileInputStream("Hero.ser");
-		ObjectInputStream objectInputStream = new ObjectInputStream(
-				fileInputStream);
+		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		hero = (Hero) objectInputStream.readObject();
 		objectInputStream.close();
 
@@ -54,7 +53,6 @@ public class SerializationExamples3 {
 		// initialization
 		// constructors and initializers are run again.
 		// After -> DanceType :Ganganam Name:Default
-		System.out.println("After -> DanceType :" + hero.danceType + " Name:"
-				+ hero.name);
+		System.out.println("After Serialization -> DanceType :" + hero.danceType + " Name:" + hero.name);
 	}
 }

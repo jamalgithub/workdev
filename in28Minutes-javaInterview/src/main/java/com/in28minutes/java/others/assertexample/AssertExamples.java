@@ -48,7 +48,8 @@ public class AssertExamples {
 
 	public static void main(String[] args) {
 		AssertExamples examples = new AssertExamples();
-		System.out.println(examples.computerSimpleInterest(-1000, 1.0f, 5));
+		//System.out.println(examples.computerSimpleInterest(-1000, 1.0f, 5));
+		System.out.println(examples.computeCompoundInterest(-1000, 1.0f, 5));
 	}
 
 	// Assertions should not be used to validate input data to a public method

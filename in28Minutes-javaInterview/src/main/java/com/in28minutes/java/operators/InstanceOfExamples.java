@@ -20,8 +20,7 @@ public class InstanceOfExamples {
 		System.out.println(subClass2 instanceof Interface);// true
 
 		// Compile Error : If the type compared is unrelated
-		// System.out.println(subClass
-		// instanceof SomeOtherClass);//Compiler Error
+		// System.out.println(subClass instanceof SomeOtherClass);//Compiler Error
 
 		// Object referred by subClassObj(SubClass)-NOT of type SomeOtherClass
 		System.out.println(subClassObj instanceof SomeOtherClass);// false

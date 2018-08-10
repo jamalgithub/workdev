@@ -6,6 +6,8 @@ public class StringExamples {
 		String str3 = "value1";
 		str3.concat("value2");
 		System.out.println(str3); // value1
+		
+		System.out.println(str3.concat("value2")); // value1value2
 
 		// The result should be assigned to a new reference variable (or same
 		// variable) can be reused.
@@ -55,7 +57,7 @@ public class StringExamples {
 
 		// All characters from index paramInt
 		// String substring(int paramInt)
-		System.out.println("abcdefghij".substring(3)); // cdefghij
+		System.out.println("abcdefghij".substring(3)); // defghij
 		// 0123456789
 
 		// All characters from index 3 to 6

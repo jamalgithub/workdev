@@ -7,7 +7,7 @@ public class TestClassInSamePackage {
 		example.publicVariable = 5;
 		example.publicMethod();
 
-		// privateVariable is not visible
+		// privateVariable,privateMethod are not visible
 		// Below Line, uncommented, would give compiler error
 		// example.privateVariable=5; //COMPILE ERROR
 		// example.privateMethod();

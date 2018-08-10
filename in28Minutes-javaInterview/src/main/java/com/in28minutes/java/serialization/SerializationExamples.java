@@ -23,8 +23,7 @@ class Rectangle implements Serializable {
 		os.defaultWriteObject();
 	}
 
-	private void readObject(ObjectInputStream is) throws IOException,
-			ClassNotFoundException {
+	private void readObject(ObjectInputStream is) throws IOException, ClassNotFoundException {
 		// Do whatever java does usually when de-serialization is called
 		is.defaultReadObject();
 		// In addition, calculate area also
@@ -34,8 +33,7 @@ class Rectangle implements Serializable {
 
 public class SerializationExamples {
 
-	public static void main(String[] args) throws IOException,
-			ClassNotFoundException {
+	public static void main(String[] args) throws IOException, ClassNotFoundException {
 		// Serialization helps us to save and retrieve the state of an object.
 		// Serialization => Convert object state to some internal object
 		// representation.
@@ -56,10 +54,10 @@ public class SerializationExamples {
 
 		// Deserializing an object
 		FileInputStream fileInputStream = new FileInputStream("Rectangle.ser");
-		ObjectInputStream objectInputStream = new ObjectInputStream(
-				fileInputStream);
+		ObjectInputStream objectInputStream = new ObjectInputStream(fileInputStream);
 		Rectangle rectangle = (Rectangle) objectInputStream.readObject();
 		objectInputStream.close();
+		
 		System.out.println(rectangle.length);// 5
 		System.out.println(rectangle.breadth);// 6
 		System.out.println(rectangle.area);// 30

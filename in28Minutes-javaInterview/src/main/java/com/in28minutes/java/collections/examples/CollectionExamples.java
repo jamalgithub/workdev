@@ -32,7 +32,8 @@ class Cricketer implements Comparable<Cricketer> {
 	}
 
 	// compareTo takes an argument of the same type of the class
-	// compareTo returns -1 if this < that
+	// compareTo returns 
+	//-1 if this < that
 	// 1 if this > that
 	// 0 if this = that
 	@Override

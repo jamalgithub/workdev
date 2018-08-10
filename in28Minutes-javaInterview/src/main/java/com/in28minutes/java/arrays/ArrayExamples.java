@@ -75,8 +75,7 @@ public class ArrayExamples {
 		// System.out.println(marks[10]);
 
 		// String Array: similar to int array.
-		String[] daysOfWeek = { "Sunday", "Monday", "Tuesday", "Wednesday",
-				"Thursday", "Friday", "Saturday" };
+		String[] daysOfWeek = { "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday" };
 
 		// Array can contain only values of same type.
 		// COMPILE ERROR!!
@@ -114,8 +113,9 @@ public class ArrayExamples {
 		// Looping a 2D array:
 		for (int[] array : matrix) {
 			for (int number : array) {
-				System.out.println(number);
+				System.out.print(number + " ");
 			}
+			System.out.println();
 		}
 
 		// Printing a 1D Array
