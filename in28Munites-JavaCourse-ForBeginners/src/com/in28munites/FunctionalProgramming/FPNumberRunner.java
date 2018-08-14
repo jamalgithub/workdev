@@ -2,6 +2,8 @@ package com.in28munites.FunctionalProgramming;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class FPNumberRunner {
 
@@ -10,16 +12,24 @@ public class FPNumberRunner {
 		
 		//Exercise - Print squares of first 10 numbers!
 		//Clue - IntStream.range(1,10)
+		fpSquare();
+		
+		//Arrays.asList("Apple", "Ant", "Bat").stream()
+		//Map all of these to lowercase and print them
+		fpLowerCase();
 		
 		//List.of("Apple", "Ant", "Bat").stream()
-		//Map all of these to lowercase and print them
-
-		//List.of("Apple", "Ant", "Bat").stream()
 		//Print the length of each element
-
+		fpLength();
+		
 		/*
 		numbers.stream()
 				.forEach( element ->System.out.println(element));*/
+		
+		System.out.println("Max : " + fpMaxListInt(numbers));
+		System.out.println("Min : " + fpMinListInt(numbers));
+		
+		System.out.println(fpOdd(numbers));
 		
 		//int sum = normalSum(numbers);
 		//int sum = fpSum(numbers);
@@ -28,6 +38,41 @@ public class FPNumberRunner {
 			
 		System.out.println(sum);
 
+	}
+	
+	private static void fpSquare() {
+		IntStream.range(1, 10)
+				.map(e -> e * e)
+				.forEach(p -> System.out.println(p));
+	}
+	
+	private static void fpLowerCase() {
+		Arrays.asList("Apple", "Ant", "Bat").stream()
+											.map(s -> s.toLowerCase())
+											.forEach(p -> System.out.println(p));
+	}
+	
+	private static void fpLength() {
+		Arrays.asList("Apple", "Ant", "Bat").stream()
+											.map(s -> s.length())
+											.forEach(p -> System.out.println(p));
+//		Arrays.asList("Apple", "Ant", "Bat").stream()
+//											.map(s -> s.length())
+//											.forEach(p -> System.out.println(p.length()));
+	}
+	
+	private static int fpMaxListInt(List<Integer> numbers) {
+		return numbers.stream().max((n1, n2) -> Integer.compare(n1, n2)).get();
+	}
+	
+	private static int fpMinListInt(List<Integer> numbers) {
+		return numbers.stream().min((n1, n2) -> Integer.compare(n1, n2)).get();
+	}
+	
+	private static List<Integer> fpOdd(List<Integer> numbers) {
+		return numbers.stream()
+				.filter(number -> number % 2 == 1)
+				.collect(Collectors.toList());
 	}
 
 	private static int normalSum(List<Integer> numbers) {
@@ -44,13 +89,13 @@ public class FPNumberRunner {
 	
 	private static int fpSumOdd(List<Integer> numbers) {
 		return numbers.stream()											// Lambda Expression is a shortcut for creating a function
-				.filter(number -> number%2 == 1) 						// Intermediate Operation
+				.filter(number -> number % 2 == 1) 						// Intermediate Operation
 				.reduce(0, (number1, number2) ->  number1 + number2);   // Terminal Operation : consume the result stream
 	}
 	
 	private static int fpSumOdd2(List<Integer> numbers) {
 		return numbers.stream()
-				.filter(number -> number%2 == 1)
+				.filter(number -> number % 2 == 1)
 				.reduce(0, (number1, number2) ->  {
 						return number1 + number2;
 					}

@@ -10,15 +10,17 @@ public class MethodReferencesRunner {
 
 	public static void main(String[] args) {
 		Arrays.asList("Ant", "Bat", "Cat", "Dog", "Elephant")
-				.stream().map(s -> s.length())
-				.forEach(s -> MethodReferencesRunner
-						.print(s));
+				.stream()
+				.map(s -> s.length())
+				.forEach(s -> MethodReferencesRunner.print(s));
 
 		Arrays.asList("Ant", "Bat", "Cat", "Dog", "Elephant")
-				.stream().map(String::length)
+				.stream()
+				.map(String::length)
 				.forEach(MethodReferencesRunner::print);
 
-		Arrays.asList(23,45,67,34).stream()
+		Arrays.asList(23,45,67,34)
+				.stream()
 				.filter(n -> n%2==0)
 				.max( (n1,n2) -> Integer.compare(n1,n2) )
 				.orElse(0);
