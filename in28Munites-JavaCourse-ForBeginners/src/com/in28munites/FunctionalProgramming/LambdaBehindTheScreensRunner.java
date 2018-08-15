@@ -33,20 +33,20 @@ class NumberSquareMapper implements Function<Integer, Integer> {
 }
 
 public class LambdaBehindTheScreensRunner {
-	
-	
 
 	public static void main(String[] args) {
 
 		Arrays.asList(23,43,34,45,36,48).stream()
-		.filter(n -> n%2 ==0)
-		.map(n -> n * n)
-		.forEach(e -> System.out.println(e));
+										.filter(n -> n%2 ==0)
+										.map(n -> n * n)
+										.forEach(e -> System.out.println(e))
+										;
 
 		Arrays.asList(23,43,34,45,36,48).stream()
-		.filter(new EvenNumberPredicate())
-		.map(new NumberSquareMapper())
-		.forEach(new SystemOutConsumer());
+										.filter(new EvenNumberPredicate())
+										.map(new NumberSquareMapper())
+										.forEach(new SystemOutConsumer())
+										;
 
 		//.map(n -> n * n)
 		//<R> Stream<R> map(Function<? super T, ? extends R> mapper);
@@ -65,7 +65,7 @@ public class LambdaBehindTheScreensRunner {
 		//3.Returning functions from methods
 		
 		Predicate<? super Integer> evenPredicate = createEvenPredicate();
-		Predicate<? super Integer> oddPredicate = n -> n%2 ==1;
+		Predicate<? super Integer> oddPredicate = n -> n % 2 == 1;
 		
 		Arrays.asList(23,43,34,45,36,48).stream()
 				.filter(evenPredicate)
@@ -74,7 +74,7 @@ public class LambdaBehindTheScreensRunner {
 	}
 
 	private static Predicate<? super Integer> createEvenPredicate() {
-		return n -> n%2 ==0;
+		return n -> n % 2 == 0;
 	}
 
 }

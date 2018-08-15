@@ -16,16 +16,19 @@ public class MethodReferencesRunner {
 
 		Arrays.asList("Ant", "Bat", "Cat", "Dog", "Elephant")
 				.stream()
-				.map(String::length)
-				.forEach(MethodReferencesRunner::print);
+				.map(String::length)				
+//				.forEach(System.out::println);
+				.forEach(MethodReferencesRunner::print)
+				;
 
 		Arrays.asList(23,45,67,34)
 				.stream()
-				.filter(n -> n%2==0)
+				.filter(n -> n % 2 == 0)
 				.max( (n1,n2) -> Integer.compare(n1,n2) )
 				.orElse(0);
 		
-		Integer max = Arrays.asList(23, 45, 67, 34).stream()
+		Integer max = Arrays.asList(23, 45, 67, 34)
+				.stream()
 				.filter(MethodReferencesRunner::isEven)
 				.max(Integer::compare)
 				.orElse(0);

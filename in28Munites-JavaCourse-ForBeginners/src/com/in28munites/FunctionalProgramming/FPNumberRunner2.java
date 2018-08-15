@@ -2,12 +2,15 @@ package com.in28munites.FunctionalProgramming;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.Optional;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-public class FPNumberRunner {
+public class FPNumberRunner2 {
 
 	public static void main(String[] args) {
 		List<Integer> numbers = Arrays.asList(4,6,8,13,3,15);
+		List<Integer> numbers2 = Arrays.asList(13,3,15);
 		
 		//Exercise - Print squares of first 10 numbers!
 		//Clue - IntStream.range(1,10)
@@ -25,12 +28,27 @@ public class FPNumberRunner {
 		numbers.stream()
 				.forEach( element ->System.out.println(element));*/
 		
+		System.out.println("Max : " + fpMaxListInt(numbers));
+		System.out.println("Min : " + fpMinListInt(numbers));
+		
+		System.out.println(fpOdd(numbers));
+		System.out.println(fpEven(numbers));
+		
+		System.out.println(fpSquare2());
+		
 		//int sum = normalSum(numbers);
 		//int sum = fpSum(numbers);
 		int sum = fpSumOdd(numbers);
 		//int sum = fpSumOdd2(numbers);
 			
 		System.out.println(sum);
+		
+		System.out.println(fpOptinalMaxListInt(numbers));
+		System.out.println(fpOptinalMaxListInt(numbers).get());
+		System.out.println(fpOptinalMaxListInt(numbers).isPresent());
+		System.out.println(fpOptinalMaxListInt(numbers2));
+		System.out.println(fpOptinalMaxListInt(numbers2).isPresent());
+		System.out.println(fpOptinalMaxListInt(numbers2).orElse(0));
 
 	}
 	
@@ -53,6 +71,41 @@ public class FPNumberRunner {
 //		Arrays.asList("Apple", "Ant", "Bat").stream()
 //											.map(s -> s.length())
 //											.forEach(p -> System.out.println(p.length()));
+	}
+	
+	private static int fpMaxListInt(List<Integer> numbers) {
+		return numbers.stream().max((n1, n2) -> Integer.compare(n1, n2)).get();
+	}
+	
+	private static Optional fpOptinalMaxListInt(List<Integer> numbers) {
+		return numbers.stream().filter(number -> number % 2 == 0).max((n1, n2) -> Integer.compare(n1, n2));
+	}
+	
+	private static int fpMinListInt(List<Integer> numbers) {
+		return numbers.stream().min((n1, n2) -> Integer.compare(n1, n2)).get();
+	}
+	
+	private static List<Integer> fpOdd(List<Integer> numbers) {
+		return numbers.stream()
+				.filter(number -> number % 2 == 1)
+				.collect(Collectors.toList())
+				;
+	}
+	
+	private static List<Integer> fpSquare2() {
+		return IntStream.range(1, 11)
+				.map(e -> e * e)
+				.boxed()
+				.collect(Collectors.toList())
+				;
+	}
+	
+	
+	
+	private static List<Integer> fpEven(List<Integer> numbers) {
+		return numbers.stream()
+				.filter(number -> number % 2 == 0)
+				.collect(Collectors.toList());
 	}
 
 	private static int normalSum(List<Integer> numbers) {
