@@ -7,8 +7,7 @@ import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 
 public class ExecutorServiceExamples {
-	public static void main(String[] args) throws InterruptedException,
-			ExecutionException {
+	public static void main(String[] args) throws InterruptedException,	ExecutionException {
 		ExecutorService executorService = Executors.newSingleThreadExecutor();
 
 		executorService.execute(new Runnable() {
@@ -43,14 +42,13 @@ public class ExecutorServiceExamples {
 
 		future.get(); // returns null if the task has finished correctly.
 
-		Future futureFromCallable = executorService1.submit(new Callable() {
+		Future<String> futureFromCallable = executorService1.submit(new Callable<String>() {
 			public String call() throws Exception {
 				return "RESULT";
 			}
 		});
 
-		System.out.println("futureFromCallable.get() = "
-				+ futureFromCallable.get());
+		System.out.println("futureFromCallable.get() = " + futureFromCallable.get());
 
 	}
 

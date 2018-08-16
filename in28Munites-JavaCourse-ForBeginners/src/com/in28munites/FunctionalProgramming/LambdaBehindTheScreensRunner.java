@@ -37,7 +37,7 @@ public class LambdaBehindTheScreensRunner {
 	public static void main(String[] args) {
 
 		Arrays.asList(23,43,34,45,36,48).stream()
-										.filter(n -> n%2 ==0)
+										.filter(n -> n % 2 == 0)
 										.map(n -> n * n)
 										.forEach(e -> System.out.println(e))
 										;
