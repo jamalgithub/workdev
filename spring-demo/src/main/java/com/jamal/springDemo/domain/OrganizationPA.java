@@ -1,5 +1,8 @@
 package com.jamal.springDemo.domain;
 
+import javax.annotation.PostConstruct;
+import javax.annotation.PreDestroy;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.core.env.Environment;
@@ -47,10 +50,12 @@ public class OrganizationPA {
 		return missionStatement + " and also " + slogan;
 	}
 
+	@PostConstruct
 	public void postConstruct() {
 		System.out.println("organization: postConstruct called...............");
 	}
 
+	@PreDestroy
 	public void preDestroy() {
 		System.out.println("organization: preDestroy called...............");
 	}
