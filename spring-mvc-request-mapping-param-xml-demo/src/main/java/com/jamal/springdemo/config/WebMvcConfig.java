@@ -12,11 +12,11 @@ import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandl
 @EnableWebMvc
 public class WebMvcConfig extends WebMvcConfigurerAdapter /* implements WebMvcConfigurer */ {
 	
-	@Bean
+	/*@Bean
 	public RequestMappingHandlerMapping requestMappingHandlerMapping() {
 		RequestMappingHandlerMapping rmhm = new RequestMappingHandlerMapping();
 		rmhm.setUseSuffixPatternMatch(false);
 		rmhm.setUseTrailingSlashMatch(false);
 		return rmhm;
-	}
+	}*/
 }

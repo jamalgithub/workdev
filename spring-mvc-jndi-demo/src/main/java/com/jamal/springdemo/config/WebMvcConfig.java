@@ -31,6 +31,6 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter /*implements WebMvcCon
 		resolver.setSuffix(".jsp");
 		resolver.setViewClass(JstlView.class);
 		return resolver;
-	}		
+	}
 
 }
