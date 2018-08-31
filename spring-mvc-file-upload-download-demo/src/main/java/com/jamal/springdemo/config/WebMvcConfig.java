@@ -5,7 +5,9 @@ import java.util.Locale;
 
 import javax.sql.DataSource;
 
+import org.apache.commons.dbcp.BasicDataSource;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.beans.factory.config.PropertiesFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,8 +15,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.context.support.ReloadableResourceBundleMessageSource;
+import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
-import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
@@ -32,8 +34,8 @@ import com.jamal.springdemo.interceptors.VisitorInterceptor;
 
 @Configuration
 @ComponentScan("com.jamal.springdemo")
-@PropertySource(value = {"classpath:test/config.properties" })
 @EnableWebMvc
+@PropertySource(value = {"classpath:organization.properties", "classpath:test/config.properties"})
 public class WebMvcConfig extends WebMvcConfigurerAdapter /* implements WebMvcConfigurer */ {
 
 	@Autowired
@@ -45,11 +47,22 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter /* implements WebMvcCo
 	@Autowired
 	private ExecutionTimerInterceptor executionTimerInterceptor;
 	
-	@Bean
+	@Autowired
+	private Environment env;
+	
+	@Value("${jdbc.driverClassName}")
+    protected String driverClassName;
+	
+	@Value("${jdbc.url}")
+    private String url;
+	
+	@Bean(name="ds")
 	public DataSource dataSource() {
-		final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
-		dsLookup.setResourceRef(true);
-		DataSource dataSource = dsLookup.getDataSource("jdbc/spring_db");
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setUsername(env.getProperty("jdbc.userName"));
+		dataSource.setPassword(env.getProperty("jdbc.password"));
+		dataSource.setDriverClassName(driverClassName);
+		dataSource.setUrl(url);
 		return dataSource;
 	}
 

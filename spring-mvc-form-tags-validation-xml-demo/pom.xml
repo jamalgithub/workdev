@@ -97,6 +97,24 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-war-plugin</artifactId>
+				<version>2.4</version>
+				<configuration>
+					<warName>spring-mvc-form-tags-validation-xml-demo</warName>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.tomcat.maven</groupId>
+				<artifactId>tomcat7-maven-plugin</artifactId>
+				<version>2.2</version>
+				<configuration>
+					<warFile>target/spring-mvc-form-tags-validation-xml-demo.war</warFile>
+					<path>/spring-mvc-form-tags-validation-xml-demo</path>
+					<contextReloadable>true</contextReloadable>
+				</configuration>
+			</plugin>
 		</plugins>
 	</build>
 </project>

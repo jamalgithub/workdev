@@ -34,6 +34,11 @@
 		<property name="viewClass"
 			value="org.springframework.web.servlet.view.JstlView"></property>
 	</bean>
+	
+	<bean name="requestMappingHandlerMapping" class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping">
+		<property name="useSuffixPatternMatch" value="false"></property>
+		<property name="useTrailingSlashMatch" value="false"></property>
+	</bean>
 
 	<mvc:interceptors>
 		<bean class="com.jamal.springdemo.interceptors.HeaderInterceptor" />

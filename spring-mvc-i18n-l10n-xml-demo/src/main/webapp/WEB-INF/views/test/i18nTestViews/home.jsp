@@ -11,7 +11,9 @@
 <body>
 	<h1><spring:message code="logo.title"/></h1>
 
-    <a href="?locale=en" title='<spring:message code="label.en" />'><img alt="" src='<c:url value="/resources/uk_32.png" />'></a><a href="?locale=fr" title='<spring:message code="label.fr" />'><img alt="" src='<c:url value="/resources/fr_32.png" />'></a><a href="?locale=es" title='<spring:message code="label.es" />'><img alt="" src='<c:url value="/resources/es_32.png" />'></a>
+    <a href="?locale=en" title='<spring:message code="label.en" />'><img alt="" src='<c:url value="/resources/uk_32.png" />'></a>
+    <a href="?locale=fr" title='<spring:message code="label.fr" />'><img alt="" src='<c:url value="/resources/fr_32.png" />'></a>
+    <a href="?locale=es" title='<spring:message code="label.es" />'><img alt="" src='<c:url value="/resources/es_32.png" />'></a>
 
     <p>${message}</p>
 
