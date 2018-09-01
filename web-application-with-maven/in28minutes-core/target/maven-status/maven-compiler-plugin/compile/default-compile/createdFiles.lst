@@ -1,0 +1,12 @@
+com\in28minutes\data\impl\UserDataServiceImpl.class
+com\in28minutes\data\impl\TodoDataServiceImpl.class
+com\in28minutes\service\api\TodoService.class
+com\in28minutes\domain\TodoItemList.class
+com\in28minutes\service\impl\UserServiceImpl.class
+com\in28minutes\service\impl\TodoServiceImpl.class
+com\in28minutes\service\api\UserService.class
+com\in28minutes\data\api\UserDataService.class
+com\in28minutes\domain\User.class
+com\in28minutes\domain\TodoItem.class
+com\in28minutes\data\api\TodoDataService.class
+com\in28minutes\domain\Priority.class
