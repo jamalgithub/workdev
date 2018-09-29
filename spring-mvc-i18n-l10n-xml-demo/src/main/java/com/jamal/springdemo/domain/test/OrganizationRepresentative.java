@@ -16,17 +16,17 @@ import com.jamal.springdemo.validation.test.FieldsVerification;;
 })
 public class OrganizationRepresentative {
 	
-	@NotBlank(message="* First Name: cannot be blank")
+	@NotBlank(message="{error.blank.firstName}")
 	private String firstName;
 	
-	@NotEmpty(message="* Surname: cannot be empty")
-	@Size(min=3, max=10, message="* Surname: min 3 characters required, max 10 characters allowed")
+	@NotEmpty(message="{error.blank.lastName}")
+	@Size(min=3, max=10, message="{error.size.lastName}")
 	private String lastName;
 	
-	@AgeConstraint(lower=20, upper=70, message="* Age: range 20 to 70 only")
+	@AgeConstraint(lower=20, upper=70, message="{error.constraint.age}")
 	private Integer age;
 	
-	@NotBlank(message="* Zipcode: cannot be empty")
+	@NotBlank(message="{error.blank.zipcode}")
 	@Pattern(regexp="^[a-zA-Z-0-9]{6}", message="* Zipcode: 6 characters and/or digits only")
 	private String zipCode;
 	

@@ -17,6 +17,7 @@ import org.springframework.context.support.ReloadableResourceBundleMessageSource
 import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.core.io.ClassPathResource;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
@@ -104,6 +105,14 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter /* implements WebMvcCo
         messageSource.setDefaultEncoding("UTF-8");
         return messageSource;
     }*/
+	
+	//@Bean
+	@Override
+	public LocalValidatorFactoryBean getValidator() {
+	    LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
+	    bean.setValidationMessageSource(messageSource());
+	    return bean;
+	}
 	
 	@Bean
 	public LocaleChangeInterceptor localeChangeInterceptor() {

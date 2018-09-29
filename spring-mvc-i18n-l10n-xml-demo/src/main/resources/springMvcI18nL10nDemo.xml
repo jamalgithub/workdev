@@ -13,10 +13,10 @@
 
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<!-- <mvc:annotation-driven /> -->
+	<mvc:annotation-driven validator="validator"/>
 	<context:annotation-config />
 	<context:component-scan base-package="com.jamal.springdemo" />
-
+	
 <!-- 	<bean class="com.jamal.springdemo.config.WebMvcConfig" /> -->
 	
 	<bean id="serviceLengthOptions" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
@@ -66,6 +66,10 @@
 	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
 		<property name="basename" value="i18n/messages"></property>
 		<property name="defaultEncoding" value="UTF-8"></property>
+	</bean>
+	
+	<bean id="validator" class="org.springframework.validation.beanvalidation.LocalValidatorFactoryBean">
+		<property name="validationMessageSource" ref="messageSource"></property>
 	</bean>
 	
 	<bean id="localeResolver" class="org.springframework.web.servlet.i18n.CookieLocaleResolver">
