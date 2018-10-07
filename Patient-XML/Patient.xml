@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<tns:patient id="0" xmlns:tns="http://www.jamal.com/Patient"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.jamal.com/Patient Patient.xsd ">
+	<tns:name>adil</tns:name>
+	<tns:age>35</tns:age>
+	<tns:dob>2001-01-01</tns:dob>
+	<tns:email>adil@gmail.com</tns:email>
+	<tns:gender>M</tns:gender>
+	<tns:phone>+212661081245</tns:phone>
+	<tns:payment>
+		<tns:cash>10000</tns:cash>
+	</tns:payment>
+</tns:patient>
