@@ -20,7 +20,7 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter /*implements WebMvcCon
 	public DataSource dataSource() {
 		final JndiDataSourceLookup dsLookup = new JndiDataSourceLookup();
 		dsLookup.setResourceRef(true);
-		DataSource dataSource = dsLookup.getDataSource("jdbc/spring_db");
+		DataSource dataSource = dsLookup.getDataSource("jdbc/myMaria");
 		return dataSource;
 	}
 	

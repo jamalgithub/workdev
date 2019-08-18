@@ -11,7 +11,7 @@
 </head>
 <body>
 	<h1>Listing organizations using the JSTL sql tag</h1>
-	<sql:query var="rs" dataSource="jdbc/spring_db">
+	<sql:query var="rs" dataSource="jdbc/myMaria">
 		SELECT * FROM organization
 	</sql:query>
 	
