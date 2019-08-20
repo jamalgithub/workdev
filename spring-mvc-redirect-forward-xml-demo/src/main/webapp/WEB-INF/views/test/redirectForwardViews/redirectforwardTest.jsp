@@ -22,12 +22,17 @@
 			<h3 style="color: #DF0101">Zip Code: ${testdata5B}</h3>
 		</c:if>
 		
+		<c:if test="${testPath != null && attr != null }">
+			<h3 style="color: #DF0101">testPath: ${testPath}</h3>
+			<h3 style="color: #DF0101">attr: ${attr}</h3>
+		</c:if>
+		
 		<c:if test="${testdata6 != null}">
 			Address relocated to: <h3 style="color: #DF0101">${testdata6.city}, ${testdata6.zipCode}</h3>
 		</c:if>
 		
-		<c:if test="${flashAtt != null}">
-			The flash Attribute: <h3 style="color: #DF0101">${flashAtt}</h3>
+		<c:if test="${flashAttribute != null}">
+			The flash Attribute: <h3 style="color: #DF0101">${flashAttribute}</h3>
 		</c:if>
 	</div>
 </body>

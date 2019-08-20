@@ -41,7 +41,7 @@ public class RedirectAndForwardController {
 	 * @param anAddress
 	 * @param model
 	 * @return the redirect URL <br>The redirect will respond with a 302 and the new URL in the Location header.<br>The browser will then make another request to the new URL<br>
-	 * curl -L --verbose -X POST http://localhost:8080/spring-mvc-form-tags-validation-xml-demo/redirectAndForwardDemo/redirectTest1
+	 * curl -L --verbose -X POST http://localhost:8080/spring-mvc-redirect-forward-xml-demo/redirectAndForwardDemo/redirectTest1
 	 */
 	@RequestMapping(value="/redirectTest1", method=RequestMethod.POST)
 	public String redirectTest1(@ModelAttribute(value="anAddress") Address anAddress, ModelMap model) {
@@ -74,7 +74,7 @@ public class RedirectAndForwardController {
 	
 	/**
 	 * Redirect With <b>RedirectView</b><br>
-	 * curl -i http://localhost:8080/spring-mvc-form-tags-validation-xml-demo/redirectAndForwardDemo/redirectTest3/pathValue/11
+	 * curl -i http://localhost:8080/spring-mvc-redirect-forward-xml-demo/redirectAndForwardDemo/redirectTest3/11
 	 * @param model
 	 * @return
 	 */
@@ -92,7 +92,7 @@ public class RedirectAndForwardController {
 	/**
 	 * Redirect With <b>RedirectView</b> and <b>RedirectAttributes</b><br>
 	 * <b>flash attribute</b> is an attribute that won’t make it into the URL. We can access it using @ModelAttribute(“flashAttribute”) only in the method that is the final target of the redirect<br>
-	 * curl -i http://localhost:8080/spring-mvc-form-tags-validation-xml-demo/redirectAndForwardDemo/redirectTest4
+	 * curl -i http://localhost:8080/spring-mvc-redirect-forward-xml-demo/redirectAndForwardDemo/redirectTest4
 	 * @param model
 	 * @return
 	 */
@@ -136,7 +136,7 @@ public class RedirectAndForwardController {
 	public String redirectTest13(Model model, @ModelAttribute("flashAttribute") Object flashAttribute) {
 		LOGGER.info("INSIDE redirectTest13");
 		
-		model.addAttribute("flashAtt", flashAttribute);
+		//model.addAttribute("flashAtt", flashAttribute);
 		
 		return "test/redirectForwardViews/redirectforwardTest";
 	}

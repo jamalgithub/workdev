@@ -20,7 +20,7 @@ public class OrganizationRepresentative {
 	private String firstName;
 	
 	@NotEmpty(message="* Surname: cannot be empty")
-	@Size(min=3, max=10, message="* Surname: min 3 characters required, max 10 characters allowed")
+	@Size(min=3, max=15, message="* Surname: min 3 characters required, max 10 characters allowed")
 	private String lastName;
 	
 	@AgeConstraint(lower=20, upper=70, message="* Age: range 20 to 70 only")

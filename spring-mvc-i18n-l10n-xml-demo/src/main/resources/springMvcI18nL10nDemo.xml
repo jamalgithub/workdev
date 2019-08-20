@@ -49,14 +49,15 @@
 	<mvc:interceptors>
 		<bean class="com.jamal.springdemo.interceptors.HeaderInterceptor" />
 		<bean class="com.jamal.springdemo.interceptors.VisitorInterceptor" />
+		<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="locale" />
 		<mvc:interceptor>
 			<mvc:mapping path="/location" />
 			<bean class="com.jamal.springdemo.interceptors.ExecutionTimerInterceptor" />
 		</mvc:interceptor>
-		<mvc:interceptor>
+		<!-- <mvc:interceptor>
 			<mvc:mapping path="/i18nL10nDemo/**" />
 			<bean class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor" p:paramName="locale" />
-        </mvc:interceptor>        
+        </mvc:interceptor> -->
 	</mvc:interceptors>		
 
 	<mvc:view-controller path="/" view-name="testMvcHome" />

@@ -29,15 +29,15 @@ public class FormValidationDemoController {
 	
 	private static Logger LOGGER = LoggerFactory.getLogger(FormValidationDemoController.class);
 	
-	@Autowired
-	Validator validator;
+	/*@Autowired
+	Validator validator;*/
 	
 	@RequestMapping("/home")
 	public ModelAndView home(Model model) {
 		return new ModelAndView("test/formValidationTestViews/formValidationHome", "orgrep", new OrganizationRepresentative());
 	}
 	
-	@RequestMapping(value="/registerOrgRep", method= RequestMethod.POST)
+	@RequestMapping(value="/registerOrgRep"/*, method= RequestMethod.POST*/)
 	public String organizationRepresentativeRegistration(@Valid @ModelAttribute("orgrep") OrganizationRepresentative orgRepresentative,
 					BindingResult result, Model model) {
 		// debug code

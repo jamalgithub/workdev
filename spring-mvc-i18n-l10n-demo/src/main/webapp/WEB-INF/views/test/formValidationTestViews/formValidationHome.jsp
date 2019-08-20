@@ -14,6 +14,10 @@
 </head>
 <body>
 	<div align="center">
+		<a href="?locale=en" title='<spring:message code="label.en" />'><img alt="" src='<c:url value="/resources/uk_32.png" />'></a>
+    	<a href="?locale=fr" title='<spring:message code="label.fr" />'><img alt="" src='<c:url value="/resources/fr_32.png" />'></a>
+    	<a href="?locale=es" title='<spring:message code="label.es" />'><img alt="" src='<c:url value="/resources/es_32.png" />'></a>
+		<hr/>
 		<h1 class="ch1">Welcome to the Form Validation Test Bed</h1>
 		<hr/>
 		<h3>Please register yourself as your Organizations Respresentative.</h3>

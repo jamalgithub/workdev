@@ -145,7 +145,8 @@ public class WebMvcConfig extends WebMvcConfigurerAdapter /* implements WebMvcCo
 
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
-		registry.addInterceptor(localeChangeInterceptor()).addPathPatterns("/i18nL10nDemo/**");
+		//registry.addInterceptor(localeChangeInterceptor()).addPathPatterns("/i18nL10nDemo/**");
+		registry.addInterceptor(localeChangeInterceptor());
 		registry.addInterceptor(headerInterceptor);
 		//registry.addInterceptor(new HeaderInterceptor());
 		registry.addInterceptor(visitorInterceptor);
