@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+                                   "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 21 d?c. 2014 18:11:08 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.tutorialspoint.hibernate.pojo.Employee" table="EMPLOYEE">
+		<id name="id" type="int" column="ID">
+			<generator class="native"/>
+		</id>
+		<property generated="never" lazy="false" name="firstname" type="java.lang.String" column="FIRSTNAME" />
+		<property generated="never" lazy="false" name="lastname" type="java.lang.String" column="LASTNAME"/>
+		<property generated="never" lazy="false" name="salary" type="java.lang.Integer" column="SALARY"/>
+		<many-to-one class="com.tutorialspoint.hibernate.pojo.Address" fetch="join" name="address" not-null="true" column="ADDRESS_ID" />
+		<many-to-one cascade="delete" class="com.tutorialspoint.hibernate.pojo.Account" name="account" not-null="true" column="ACCOUNT_ID" unique="true"/>
+		<set cascade="all" name="certificates" sort="unsorted">
+			<key column="employee_id"/>
+			<one-to-many class="com.tutorialspoint.hibernate.pojo.Certificate"/>
+		</set>
+		<set cascade="save-update" name="meetings" table="EMPLOYEE_MEETING">
+			<key column="employee_id"/>
+			<many-to-many class="com.tutorialspoint.hibernate.pojo.Meeting" column="meeting_id"/>
+		</set>
+	</class>
+</hibernate-mapping>
