@@ -1,0 +1,51 @@
+package com.madhusudhan.j8.streams.commonops;
+import java.util.List;
+import java.util.stream.Stream;
+
+import com.madhusudhan.j8.domain.Employee;
+import com.madhusudhan.j8.util.EmployeeUtil;
+
+//Distinct, Limit and Skip operations
+public class DistinctLimitSkip {
+	List<Employee> employees = EmployeeUtil.createEmployees();
+
+	private void testDistinct() {
+		Stream<String> employeesNamesStream = 
+				employees
+				.stream()
+				.map(Employee::getName)
+				.distinct();
+		
+		employeesNamesStream.forEach(System.out::println);
+		
+	}
+	private void testLimit() {
+		Stream<String> employeesNamesStream = 
+				employees
+				.stream()
+				.map(Employee::getName)
+				.distinct()
+				.limit(3);
+		
+		employeesNamesStream.forEach(System.out::println);
+	}
+	
+	private void testSkip() {
+		Stream<String> employeesNamesStream = 
+				employees
+				.stream()
+				.map(Employee::getName)
+				.distinct()
+				.skip(2);
+		
+		employeesNamesStream.forEach(System.out::println);
+	
+	}
+
+	public static void main(String[] args) {
+		new DistinctLimitSkip().testDistinct();
+		new DistinctLimitSkip().testLimit();
+		new DistinctLimitSkip().testSkip();
+	}
+
+}
