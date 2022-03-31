@@ -10,7 +10,7 @@
 	<name>FitnessTracker</name>
 
 	<properties>
-		<springframework.version>4.3.12.RELEASE</springframework.version>
+		<springframework.version>5.3.18</springframework.version>
 		<springsecurity.version>4.2.4.RELEASE</springsecurity.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
